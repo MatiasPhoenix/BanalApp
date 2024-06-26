@@ -6,17 +6,23 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './Components/home/home.component';
 import { LateralBarComponent } from './Components/lateral-bar/lateral-bar.component';
 import { PromemoriaComponent } from './Components/promemoria/promemoria.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LateralBarComponent,
-    PromemoriaComponent
+    PromemoriaComponent,
+
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatSidenavModule
   ],
   providers: [
     provideClientHydration()
