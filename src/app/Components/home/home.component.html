@@ -1,1 +1,3 @@
-<p class="prova">home works!</p>
+<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+  <div *ngFor="let movie of movies" class="example-box" cdkDrag>{{movie}}</div>
+</div>

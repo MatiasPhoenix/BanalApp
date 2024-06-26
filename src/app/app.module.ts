@@ -8,6 +8,8 @@ import { LateralBarComponent } from './Components/lateral-bar/lateral-bar.compon
 import { PromemoriaComponent } from './Components/promemoria/promemoria.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { CreditsComponent } from './Components/credits/credits.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     HomeComponent,
     LateralBarComponent,
     PromemoriaComponent,
+    CreditsComponent,
 
 
   ],
@@ -22,7 +25,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    DragDropModule
   ],
   providers: [
     provideClientHydration()
