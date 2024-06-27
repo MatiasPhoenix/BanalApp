@@ -1,3 +1,14 @@
-<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-  <div *ngFor="let movie of movies" class="example-box" cdkDrag>{{movie}}</div>
-</div>
+<p class="text-center">Inserisci nuovo elemento</p>
+<form class="text-center">
+  <input class="py-2" type="text" name="testo" [(ngModel)]="elementoProva"/>
+  <button class="btn btn-primary align-item-center ms-1 py-2" (click)="addElement()">
+    IButton
+  </button>
+
+</form>
+
+
+  <div cdkDropList class="example-list mt-3" (cdkDropListDropped)="drop($event)">
+    <div *ngFor="let movie of movies" class="example-box" cdkDrag>{{movie}}</div>
+  </div>
+

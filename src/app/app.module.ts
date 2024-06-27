@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,14 +20,14 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     PromemoriaComponent,
     CreditsComponent,
 
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSidenavModule,
-    DragDropModule
+    DragDropModule,
+    FormsModule
   ],
   providers: [
     provideClientHydration()

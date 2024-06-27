@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class LateralBarComponent {
 
+  destroy(){
+    localStorage.clear();
+    console.log(localStorage);
+  }
 }
