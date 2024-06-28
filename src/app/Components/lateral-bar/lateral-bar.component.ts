@@ -11,4 +11,5 @@ export class LateralBarComponent {
     localStorage.clear();
     console.log(localStorage);
   }
+
 }

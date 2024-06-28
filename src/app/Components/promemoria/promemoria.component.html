@@ -1,1 +1,41 @@
-<p>promemoria works!</p>
+<div class="d-flex justify-content-center">
+
+
+<div class="example-container">
+  <h4>To do</h4>
+
+  <div
+    cdkDropList
+    #todoList="cdkDropList"
+    [cdkDropListData]="todo"
+    [cdkDropListConnectedTo]="[doneList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    @for (item of todo; track item) {
+      <div class="example-box" cdkDrag>{{item}}
+        <span class="text-danger cursor-pointer pe-2">X</span>
+        <img src="https://picsum.photos/200/300/?blur=2" alt="">
+      </div>
+    }
+  </div>
+</div>
+
+<div class="example-container">
+  <h4>Done</h4>
+
+  <div
+    cdkDropList
+    #doneList="cdkDropList"
+    [cdkDropListData]="done"
+    [cdkDropListConnectedTo]="[todoList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    @for (item of done; track item) {
+      <div class="example-box" cdkDrag>{{item}}
+        <span class="text-danger cursor-pointer pe-2">X</span>
+      </div>
+    }
+  </div>
+</div>
+
+</div>

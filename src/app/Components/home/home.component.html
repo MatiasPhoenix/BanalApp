@@ -1,14 +1,19 @@
-<p class="text-center">Inserisci nuovo elemento</p>
-<form class="text-center">
-  <input class="py-2" type="text" name="testo" [(ngModel)]="elementoProva"/>
-  <button class="btn btn-primary align-item-center ms-1 py-2" (click)="addElement()">
-    IButton
-  </button>
+<div class="d-flex justify-content-center">
 
-</form>
+  <div>
+    <form class="text-center">
+      <input class="p-2 " type="text" name="testo" placeholder="Inserisci nuovo elemento" [(ngModel)]="elementoProva"/>
+      <button class="btn btn-primary align-item-center ms-1 py-2" (click)="addElement()">
+        IButton
+      </button>
+    </form>
 
+    <div cdkDropList class="example-list mt-3" (cdkDropListDropped)="drop($event)">
+      <div *ngFor="let element of myElements" class="example-box" cdkDrag>{{element.text}}
+        <span class="text-danger cursor-pointer pe-2" (click)="removeElement(element.text)">X</span>
+      </div>
+    </div>
 
-  <div cdkDropList class="example-list mt-3" (cdkDropListDropped)="drop($event)">
-    <div *ngFor="let movie of movies" class="example-box" cdkDrag>{{movie}}</div>
   </div>
 
+</div>
