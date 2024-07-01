@@ -1,18 +1,23 @@
+<div>
+  <h3>Crea la tua card</h3>
+  <p>Riga 1</p>
+  <p>Aggiunta 2</p>
+  <p>Robe a caso 3</p>
+</div>
+
 <div class="d-flex justify-content-center">
-
-
 <div class="example-container">
-  <h4>To do</h4>
 
   <div
-    cdkDropList
-    #todoList="cdkDropList"
-    [cdkDropListData]="todo"
-    [cdkDropListConnectedTo]="[doneList, progressList, pausaList]"
-    class="example-list"
-    (cdkDropListDropped)="drop($event)">
+  cdkDropList
+  #todoList="cdkDropList"
+  [cdkDropListData]="todo"
+  [cdkDropListConnectedTo]="[doneList, progressList, pausaList]"
+  class="example-list"
+  (cdkDropListDropped)="drop($event)">
+  <h6 class="pt-2">To do</h6>
     @for (item of todo; track item) {
-      <mat-card class="example-card" appearance="outlined" cdkDrag>
+      <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
           <mat-card-title>{{item.title}}</mat-card-title>
@@ -20,9 +25,7 @@
         </mat-card-header>
         <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.img}} alt="">
         <mat-card-content>
-          <p>
-            Qui c'è del testo a caso de la concha de tu hermana y de la puta que te pario!
-          </p>
+
         </mat-card-content>
         <mat-card-actions>
           <button class="btn btn-danger me-1" mat-button>LIKE</button>
@@ -30,21 +33,23 @@
         </mat-card-actions>
       </mat-card>
     }
+
+    <p class="cursor-pointer text-secondary pt-2">Aggiungi altre card</p>
   </div>
 </div>
 
 <div class="example-container">
-  <h4>In Progress</h4>
 
   <div
-    cdkDropList
-    #progressList="cdkDropList"
-    [cdkDropListData]="inProgress"
-    [cdkDropListConnectedTo]="[doneList, todoList, pausaList]"
-    class="example-list d-flex flex-column"
-    (cdkDropListDropped)="drop($event)">
+  cdkDropList
+  #progressList="cdkDropList"
+  [cdkDropListData]="inProgress"
+  [cdkDropListConnectedTo]="[doneList, todoList, pausaList]"
+  class="example-list d-flex flex-column"
+  (cdkDropListDropped)="drop($event)">
+  <h6 class="pt-2">In Progress</h6>
     @for (item of inProgress; track item) {
-      <mat-card class="example-card" appearance="outlined" cdkDrag>
+      <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
           <mat-card-title>{{item.title}}</mat-card-title>
@@ -52,9 +57,7 @@
         </mat-card-header>
         <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.img}} alt="">
         <mat-card-content>
-          <p>
-            {{item.title}}{{item.title}}{{item.title}}{{item.title}}{{item.title}}{{item.title}}
-          </p>
+
         </mat-card-content>
         <mat-card-actions>
           <button class="btn btn-danger me-1" mat-button>LIKE</button>
@@ -63,22 +66,22 @@
       </mat-card>
 
       }
-
+      <p class="cursor-pointer text-secondary pt-2">Aggiungi altre card</p>
   </div>
 </div>
 
-<div class="example-container">
-  <h4>Pausa</h4>
+<div class="example-container p-2 bgSection">
 
   <div
-    cdkDropList
-    #pausaList="cdkDropList"
-    [cdkDropListData]="pausaItems"
-    [cdkDropListConnectedTo]="[doneList, todoList, progressList]"
-    class="example-list d-flex flex-column"
-    (cdkDropListDropped)="drop($event)">
+  cdkDropList
+  #pausaList="cdkDropList"
+  [cdkDropListData]="pausaItems"
+  [cdkDropListConnectedTo]="[doneList, todoList, progressList]"
+  class="example-list d-flex flex-column"
+  (cdkDropListDropped)="drop($event)">
+  <h6 class="pt-2">Pausa</h6>
     @for (item of pausaItems; track item) {
-      <mat-card class="example-card" appearance="outlined" cdkDrag>
+      <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
           <mat-card-title>{{item.title}}</mat-card-title>
@@ -86,9 +89,7 @@
         </mat-card-header>
         <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.img}} alt="">
         <mat-card-content>
-          <p>
-            asdasd
-          </p>
+
         </mat-card-content>
         <mat-card-actions>
           <button class="btn btn-danger me-1" mat-button>LIKE</button>
@@ -97,22 +98,22 @@
       </mat-card>
 
       }
-
+      <p class="cursor-pointer text-secondary pt-2">Aggiungi altre card</p>
   </div>
 </div>
 
-<div class="example-container">
-  <h4>Done</h4>
+<div class="example-container p-2 bgSection">
 
   <div
-    cdkDropList
-    #doneList="cdkDropList"
-    [cdkDropListData]="done"
-    [cdkDropListConnectedTo]="[todoList, progressList, pausaList]"
-    class="example-list d-flex flex-column"
-    (cdkDropListDropped)="drop($event)">
+  cdkDropList
+  #doneList="cdkDropList"
+  [cdkDropListData]="done"
+  [cdkDropListConnectedTo]="[todoList, progressList, pausaList]"
+  class="example-list d-flex flex-column"
+  (cdkDropListDropped)="drop($event)">
+  <h6 class="pt-2">Done</h6>
     @for (item of done; track item) {
-      <mat-card class="example-card" appearance="outlined" cdkDrag>
+      <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
           <mat-card-title>{{item.title}}</mat-card-title>
@@ -120,10 +121,7 @@
         </mat-card-header>
         <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.img}} alt="">
         <mat-card-content>
-          <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small.
-          </p>
+
         </mat-card-content>
         <mat-card-actions>
           <button class="btn btn-danger me-1" mat-button>LIKE</button>
@@ -133,6 +131,7 @@
 
       }
 
+      <p class="cursor-pointer text-secondary pt-2" (click)="newCard()">Aggiungi altre card</p>
   </div>
 </div>
 

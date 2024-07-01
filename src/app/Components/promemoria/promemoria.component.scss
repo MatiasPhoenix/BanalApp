@@ -1,7 +1,8 @@
 .example-container {
-  width: 400px;
+  width: 430px;
   max-width: 100%;
   margin: 0 25px 25px 0;
+  padding: 10px;
   display: inline-block;
   vertical-align: top;
 }
@@ -9,10 +10,12 @@
 .example-list {
   border: solid 1px #ccc;
   min-height: 60px;
-  background: white;
+  background: rgb(224, 221, 221);
   border-radius: 4px;
   overflow: hidden;
   display: block;
+  padding-top: 10px;
+  padding: 0 10px 0 10px;
 }
 
 .example-box {
