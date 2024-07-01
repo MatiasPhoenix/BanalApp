@@ -8,15 +8,96 @@
     cdkDropList
     #todoList="cdkDropList"
     [cdkDropListData]="todo"
-    [cdkDropListConnectedTo]="[doneList]"
+    [cdkDropListConnectedTo]="[doneList, progressList, pausaList]"
     class="example-list"
     (cdkDropListDropped)="drop($event)">
     @for (item of todo; track item) {
-      <div class="example-box" cdkDrag>{{item}}
-        <span class="text-danger cursor-pointer pe-2">X</span>
-        <img src="https://picsum.photos/200/300/?blur=2" alt="">
-      </div>
+      <mat-card class="example-card" appearance="outlined" cdkDrag>
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{item.title}}</mat-card-title>
+          <mat-card-subtitle>++{{item.title}}++</mat-card-subtitle>
+        </mat-card-header>
+        <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.img}} alt="">
+        <mat-card-content>
+          <p>
+            Qui c'è del testo a caso de la concha de tu hermana y de la puta que te pario!
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button class="btn btn-danger me-1" mat-button>LIKE</button>
+          <button class="btn btn-primary" mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
     }
+  </div>
+</div>
+
+<div class="example-container">
+  <h4>In Progress</h4>
+
+  <div
+    cdkDropList
+    #progressList="cdkDropList"
+    [cdkDropListData]="inProgress"
+    [cdkDropListConnectedTo]="[doneList, todoList, pausaList]"
+    class="example-list d-flex flex-column"
+    (cdkDropListDropped)="drop($event)">
+    @for (item of inProgress; track item) {
+      <mat-card class="example-card" appearance="outlined" cdkDrag>
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{item.title}}</mat-card-title>
+          <mat-card-subtitle>++{{item.title}}++</mat-card-subtitle>
+        </mat-card-header>
+        <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.img}} alt="">
+        <mat-card-content>
+          <p>
+            {{item.title}}{{item.title}}{{item.title}}{{item.title}}{{item.title}}{{item.title}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button class="btn btn-danger me-1" mat-button>LIKE</button>
+          <button class="btn btn-primary" mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+
+      }
+
+  </div>
+</div>
+
+<div class="example-container">
+  <h4>Pausa</h4>
+
+  <div
+    cdkDropList
+    #pausaList="cdkDropList"
+    [cdkDropListData]="pausaItems"
+    [cdkDropListConnectedTo]="[doneList, todoList, progressList]"
+    class="example-list d-flex flex-column"
+    (cdkDropListDropped)="drop($event)">
+    @for (item of pausaItems; track item) {
+      <mat-card class="example-card" appearance="outlined" cdkDrag>
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{item.title}}</mat-card-title>
+          <mat-card-subtitle>++{{item.title}}++</mat-card-subtitle>
+        </mat-card-header>
+        <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.img}} alt="">
+        <mat-card-content>
+          <p>
+            asdasd
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button class="btn btn-danger me-1" mat-button>LIKE</button>
+          <button class="btn btn-primary" mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+
+      }
+
   </div>
 </div>
 
@@ -27,15 +108,33 @@
     cdkDropList
     #doneList="cdkDropList"
     [cdkDropListData]="done"
-    [cdkDropListConnectedTo]="[todoList]"
-    class="example-list"
+    [cdkDropListConnectedTo]="[todoList, progressList, pausaList]"
+    class="example-list d-flex flex-column"
     (cdkDropListDropped)="drop($event)">
     @for (item of done; track item) {
-      <div class="example-box" cdkDrag>{{item}}
-        <span class="text-danger cursor-pointer pe-2">X</span>
-      </div>
-    }
+      <mat-card class="example-card" appearance="outlined" cdkDrag>
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{item.title}}</mat-card-title>
+          <mat-card-subtitle>++{{item.title}}++</mat-card-subtitle>
+        </mat-card-header>
+        <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.img}} alt="">
+        <mat-card-content>
+          <p>
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button class="btn btn-danger me-1" mat-button>LIKE</button>
+          <button class="btn btn-primary" mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+
+      }
+
   </div>
 </div>
 
 </div>
+
