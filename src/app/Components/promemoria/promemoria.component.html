@@ -5,56 +5,50 @@
       <span class="close" (click)="cancelModal()">&times;</span>
     </div>
 
-    <form class="example-form container">
+    <form class="example-form container" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
       <div class="flex-column justify-content-center">
 
-        <p>Titolo</p>
-        <td><mat-form-field class="example-full-width">
-          <mat-label></mat-label>
-          <input matInput>
-        </mat-form-field></td>
-        <!-- <td><mat-form-field class="example-full-width">
-          <mat-label></mat-label>
-          <input matInput>
-        </mat-form-field></td> -->
-
-        <p>Testo della Card</p>
-      <div>
-        <mat-form-field class="example-full-width">
-          <mat-label></mat-label>
-          <textarea matInput placeholder=""></textarea>
+        <mat-form-field appearance="fill">
+          <mat-label>Titolo Card</mat-label>
+          <input matInput placeholder="Ciao sono un titolo!" [(ngModel)]="titoloCard" name="titoloCard" required>
         </mat-form-field>
+
+        <div>
+          <mat-form-field class="example-full-width">
+            <mat-label>Testo della Card</mat-label>
+            <textarea matInput placeholder="Diventerò il testo della tua card!" [(ngModel)]="testoCard" name="testoCard" required></textarea>
+          </mat-form-field>
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <mat-form-field>
+            <mat-label>Colleghi</mat-label>
+            <mat-select [(ngModel)]="collegaUno" name="collegaUno" required>
+              <mat-option value="one">First option</mat-option>
+              <mat-option value="two">Second option</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Colleghi</mat-label>
+            <mat-select [(ngModel)]="collegaDue" name="collegaDue" required>
+              <mat-option value="one">First option</mat-option>
+              <mat-option value="two">Second option</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <mat-slide-toggle [(ngModel)]="opzioneUnoCard" name="opzioneUnoCard">Opzione Uno</mat-slide-toggle>
+          <mat-slide-toggle [(ngModel)]="opzioneDueCard" name="opzioneDueCard">Opzione Due</mat-slide-toggle>
+          <mat-slide-toggle [(ngModel)]="opzioneTreCard" name="opzioneTreCard">Opzione Tre</mat-slide-toggle>
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+          <button mat-raised-button color="primary" class="btn btn-success" type="submit">IButtonPlus</button>
+        </div>
       </div>
+    </form>
 
-      <div class="d-flex justify-content-between">
-        <mat-form-field>
-          <mat-label>Colleghi</mat-label>
-          <mat-select>
-            <mat-option value="one">First option</mat-option>
-            <mat-option value="two">Second option</mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Colleghi</mat-label>
-          <mat-select>
-            <mat-option value="one">First option</mat-option>
-            <mat-option value="two">Second option</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <form class="example-form d-flex justify-content-between" #form="ngForm" (ngSubmit)="alertFormValues(form.form)">
-
-        <mat-slide-toggle [(ngModel)]="opzioneUnoCard" name="opzioneUnoCard">Opzione Uno</mat-slide-toggle>
-        <mat-slide-toggle [(ngModel)]="opzioneDueCard" name="opzioneDueCard">Opzione Due</mat-slide-toggle>
-        <mat-slide-toggle [(ngModel)]="opzioneTreCard" name="opzioneTreCard">Opzione Tre</mat-slide-toggle>
-
-
-      </form>
-
-    </div>
-    <button class="text-center">IButtonPlus</button>
-  </form>
 </div>
 </div>
 
@@ -74,10 +68,10 @@
       <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>{{item.title}}</mat-card-title>
-          <mat-card-subtitle>++{{item.title}}++</mat-card-subtitle>
+          <mat-card-title>{{item.titoloCard}}</mat-card-title>
+          <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
         </mat-card-header>
-        <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.img}} alt="">
+        <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
         <mat-card-content>
 
         </mat-card-content>
@@ -88,7 +82,7 @@
       </mat-card>
     }
 
-    <p class="cursor-pointer text-secondary pt-2">Aggiungi altre card</p>
+    <p class="cursor-pointer text-secondary pt-2" (click)="newCard('todo')">Aggiungi altre card</p>
   </div>
 </div>
 
@@ -106,10 +100,10 @@
       <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>{{item.title}}</mat-card-title>
-          <mat-card-subtitle>++{{item.title}}++</mat-card-subtitle>
+          <mat-card-title>{{item.titoloCard}}</mat-card-title>
+          <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
         </mat-card-header>
-        <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.img}} alt="">
+        <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
         <mat-card-content>
 
         </mat-card-content>
@@ -120,7 +114,7 @@
       </mat-card>
 
       }
-      <p class="cursor-pointer text-secondary pt-2">Aggiungi altre card</p>
+      <p class="cursor-pointer text-secondary pt-2" (click)="newCard('inProgress')">Aggiungi altre card</p>
   </div>
 </div>
 
@@ -138,10 +132,10 @@
       <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>{{item.title}}</mat-card-title>
-          <mat-card-subtitle>++{{item.title}}++</mat-card-subtitle>
+          <mat-card-title>{{item.titoloCard}}</mat-card-title>
+          <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
         </mat-card-header>
-        <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.img}} alt="">
+        <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
         <mat-card-content>
 
         </mat-card-content>
@@ -152,7 +146,7 @@
       </mat-card>
 
       }
-      <p class="cursor-pointer text-secondary pt-2">Aggiungi altre card</p>
+      <p class="cursor-pointer text-secondary pt-2" (click)="newCard('pausa')">Aggiungi altre card</p>
   </div>
 </div>
 
@@ -170,10 +164,10 @@
       <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>{{item.title}}</mat-card-title>
-          <mat-card-subtitle>++{{item.title}}++</mat-card-subtitle>
+          <mat-card-title>{{item.titoloCard}}</mat-card-title>
+          <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
         </mat-card-header>
-        <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.img}} alt="">
+        <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
         <mat-card-content>
 
         </mat-card-content>
@@ -185,7 +179,7 @@
 
       }
 
-      <p class="cursor-pointer text-secondary pt-2" (click)="newCard()">Aggiungi altre card</p>
+      <p class="cursor-pointer text-secondary pt-2" (click)="newCard('done')">Aggiungi altre card</p>
   </div>
 </div>
 

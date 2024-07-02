@@ -1,12 +1,17 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {MatListModule} from '@angular/material/list';
 import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag, CdkDropList,} from '@angular/cdk/drag-drop';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
 interface MyElement {
-  title: string,
-  img : string,
-  text: string,
+  titoloCard      : string,
+  imgCard         : string,
+  testoCard       : string,
+  collegaUno      : string,
+  collegaDue      : string,
+  opzioneUnoCard  : boolean,
+  opzioneDueCard  : boolean,
+  opzioneTreCard  : boolean,
 }
 
 @Component({
@@ -33,7 +38,15 @@ export class PromemoriaComponent {
   ];
 
   done : MyElement[] = [
-    // { title: "Vla vla bla", img: "", text: "aslkdalskdjlkjasdflkjasflkjsdflkjasflkjsflkjsdfnpbvoopjkfnjkngopjkjkbjkbfikijbjkkjfjkb" },
+    { titoloCard: "Proviamo una prova",
+      imgCard: "",
+      testoCard:   "un sacco di testo qui dove si scrivono robe",
+      collegaUno: "Sempronio",
+      collegaDue: "Caio",
+      opzioneUnoCard: true,
+      opzioneDueCard: false,
+      opzioneTreCard: true,
+     },
     // { title: "Pick up groceries", img: "https://picsum.photos/450/250/?blur=1", text: "aslkdalskdjlkjasdflkjasflkjsdflkjasflkjsflkjsdfnpbvoopjkfnjkngopjkjkbjkbfikijbjkkjfjkb" },
     // { title: "Go home", img: "", text: "aslkdalskdjlkjasdflkjasflkjsdflkjasflkjsflkjsdfnpbvoopjkfnjkngopjkjkbjkbfikijbjkkjfjkb" },
 
@@ -54,27 +67,48 @@ export class PromemoriaComponent {
 
 
   //Sezione dedicata alle nuove CARD//
-  schermataCard : boolean = false;
-  titoloCard : string = "";
-  testoCard : string = "";
-  opzioneUnoCard : boolean = false;
-  opzioneDueCard : boolean = false;
-  opzioneTreCard : boolean = false;
+
+  tipoDiCard      : string    = "";
+  titoloCard      : string    = "";
+  testoCard       : string    = "";
+  collegaUno      : string    = "";
+  collegaDue      : string    = "";
+  schermataCard   : boolean   = false;
+  opzioneUnoCard  : boolean   = false;
+  opzioneDueCard  : boolean   = false;
+  opzioneTreCard  : boolean   = false;
 
 
 
-  newCard(){
-    return this.schermataCard = true;
+  newCard(typeCard : any) : any {
+    this.schermataCard = true;
+    typeCard.toStrin
+    return this.tipoDiCard = typeCard;
   }
   cancelModal() {
     this.schermataCard = false;
   }
 
-
-
-
-
-    alertFormValues(formGroup: FormGroup) {
-      alert(JSON.stringify(formGroup.value, null, 2));
+  onSubmit(form: NgForm) {
+    switch (this.tipoDiCard) {
+      case 'done':
+        this.done.push(form.value);
+        break;
+      case 'inProgress':
+        this.inProgress.push(form.value)
+        break;
+      case 'pausa':
+        this.pausaItems.push(form.value)
+        break;
+      case 'todo':
+        this.todo.push(form.value)
+        break;
+      default:
+        console.error('Array non valido selezionato');
     }
+
+    this.schermataCard = false;
+    form.reset();
+    // alert(JSON.stringify(formGroup.value, null, 2));
+  }
 }
