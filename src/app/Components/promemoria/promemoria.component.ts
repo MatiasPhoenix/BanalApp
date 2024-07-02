@@ -25,7 +25,6 @@ export class PromemoriaComponent {
     // { title: "Get to work", img: "https://picsum.photos/450/250/?blur=2", text: "aslkdalskdjlkjasdflkjasflkjsdflkjasflkjsflkjsdfnpbvoopjkfnjkngopjkjkbjkbfikijbjkkjfjkb" },
     // { title: "Pick up groceries", img: "", text: "aslkdalskdjlkjasdflkjasflkjsdflkjasflkjsflkjsdfnpbvoopjkfnjkngopjkjkbjkbfikijbjkkjfjkb" },
     // { title: "Fall asleep", img: "https://picsum.photos/450/250/?blur=1", text: "aslkdalskdjlkjasdflkjasflkjsdflkjasflkjsflkjsdfnpbvoopjkfnjkngopjkjkbjkbfikijbjkkjfjkb" },
-
   ];
 
   inProgress : MyElement[] = [
