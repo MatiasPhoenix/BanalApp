@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import {MatListModule} from '@angular/material/list';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,7 +34,12 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatSidenavModule,
     DragDropModule,
     FormsModule,
-    MatCardModule
+    MatCardModule,
+    MatInputModule,
+    MatListModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatSlideToggleModule,
   ],
   providers: [
     provideClientHydration()

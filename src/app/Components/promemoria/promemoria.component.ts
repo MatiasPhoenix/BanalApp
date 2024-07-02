@@ -1,5 +1,7 @@
 import {Component, EventEmitter, Output} from '@angular/core';
+import {MatListModule} from '@angular/material/list';
 import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag, CdkDropList,} from '@angular/cdk/drag-drop';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 interface MyElement {
   title: string,
@@ -10,7 +12,7 @@ interface MyElement {
 @Component({
   selector: 'app-promemoria',
   templateUrl: './promemoria.component.html',
-  styleUrl: './promemoria.component.scss'
+  styleUrl: './promemoria.component.scss',
 })
 export class PromemoriaComponent {
 
@@ -50,8 +52,29 @@ export class PromemoriaComponent {
     }
   }
 
-  newCard(){
 
+  //Sezione dedicata alle nuove CARD//
+  schermataCard : boolean = false;
+  titoloCard : string = "";
+  testoCard : string = "";
+  opzioneUnoCard : boolean = false;
+  opzioneDueCard : boolean = false;
+  opzioneTreCard : boolean = false;
+
+
+
+  newCard(){
+    return this.schermataCard = true;
+  }
+  cancelModal() {
+    this.schermataCard = false;
   }
 
+
+
+
+
+    alertFormValues(formGroup: FormGroup) {
+      alert(JSON.stringify(formGroup.value, null, 2));
+    }
 }
