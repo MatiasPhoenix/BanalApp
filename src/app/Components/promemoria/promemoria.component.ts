@@ -1,7 +1,7 @@
-import {Component, EventEmitter, Output} from '@angular/core';
-import {MatListModule} from '@angular/material/list';
-import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag, CdkDropList,} from '@angular/cdk/drag-drop';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import {Component} from '@angular/core';
+import { LocalSaveService } from './../../Services/local-save.service';
+import { CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { NgForm,  } from '@angular/forms';
 
 interface MyElement {
   titoloCard      : string,
@@ -9,6 +9,7 @@ interface MyElement {
   testoCard       : string,
   collegaUno      : string,
   collegaDue      : string,
+  avatar          : string,
   opzioneUnoCard  : boolean,
   opzioneDueCard  : boolean,
   opzioneTreCard  : boolean,
@@ -20,36 +21,20 @@ interface MyElement {
   styleUrl: './promemoria.component.scss',
 })
 export class PromemoriaComponent {
+  ngOnInit(){
+    this.getAllArray()
+  }
 
-  todo : MyElement[] = [
-    // { title: "Get to work", img: "https://picsum.photos/450/250/?blur=2", text: "aslkdalskdjlkjasdflkjasflkjsdflkjasflkjsflkjsdfnpbvoopjkfnjkngopjkjkbjkbfikijbjkkjfjkb" },
-    // { title: "Pick up groceries", img: "", text: "aslkdalskdjlkjasdflkjasflkjsdflkjasflkjsflkjsdfnpbvoopjkfnjkngopjkjkbjkbfikijbjkkjfjkb" },
-    // { title: "Fall asleep", img: "https://picsum.photos/450/250/?blur=1", text: "aslkdalskdjlkjasdflkjasflkjsdflkjasflkjsflkjsdfnpbvoopjkfnjkngopjkjkbjkbfikijbjkkjfjkb" },
-  ];
+  constructor(private LocalSaveService: LocalSaveService){}
 
-  inProgress : MyElement[] = [
-    // { title: "Vla vla bla", img: "", text: "aslkdalskdjlkjasdflkjasflkjsdflkjasflkjsflkjsdfnpbvoopjkfnjkngopjkjkbjkbfikijbjkkjfjkb" },
-  ];
+  todo        : MyElement[] = [];
 
-  pausaItems : MyElement[] = [
-    // { title: "Vla vla bla", img: "", text: "aslkdalskdjlkjasdflkjasflkjsdflkjasflkjsflkjsdfnpbvoopjkfnjkngopjkjkbjkbfikijbjkkjfjkb" },
-    // { title: "Fall asleep", img: "https://picsum.photos/450/250/?blur=4", text: "aslkdalskdjlkjasdflkjasflkjsdflkjasflkjsflkjsdfnpbvoopjkfnjkngopjkjkbjkbfikijbjkkjfjkb" },
-  ];
+  done        : MyElement[] = [];
 
-  done : MyElement[] = [
-    { titoloCard: "Proviamo una prova",
-      imgCard: "",
-      testoCard:   "un sacco di testo qui dove si scrivono robe",
-      collegaUno: "Sempronio",
-      collegaDue: "Caio",
-      opzioneUnoCard: true,
-      opzioneDueCard: false,
-      opzioneTreCard: true,
-     },
-    // { title: "Pick up groceries", img: "https://picsum.photos/450/250/?blur=1", text: "aslkdalskdjlkjasdflkjasflkjsdflkjasflkjsflkjsdfnpbvoopjkfnjkngopjkjkbjkbfikijbjkkjfjkb" },
-    // { title: "Go home", img: "", text: "aslkdalskdjlkjasdflkjasflkjsdflkjasflkjsflkjsdfnpbvoopjkfnjkngopjkjkbjkbfikijbjkkjfjkb" },
+  inProgress  : MyElement[] = [];
 
-  ];
+  pausaItems  : MyElement[] = [];
+
 
   drop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
@@ -62,6 +47,7 @@ export class PromemoriaComponent {
         event.currentIndex,
       );
     }
+    this.saveAllArray();
   }
 
 
@@ -72,6 +58,7 @@ export class PromemoriaComponent {
   testoCard       : string    = "";
   collegaUno      : string    = "";
   collegaDue      : string    = "";
+  avatar          : string    = "";
   schermataCard   : boolean   = false;
   opzioneUnoCard  : boolean   = false;
   opzioneDueCard  : boolean   = false;
@@ -105,9 +92,21 @@ export class PromemoriaComponent {
       default:
         console.error('Array non valido selezionato');
     }
-
     this.schermataCard = false;
     form.reset();
-    // alert(JSON.stringify(formGroup.value, null, 2));
+    this.saveAllArray();
+  }
+
+  saveAllArray(){
+    this.LocalSaveService.saveElement('done', this.done);
+    this.LocalSaveService.saveElement('inProgress', this.inProgress);
+    this.LocalSaveService.saveElement('pausaItems', this.pausaItems);
+    this.LocalSaveService.saveElement('todo', this.todo);
+  }
+  getAllArray(){
+    this.done = this.LocalSaveService.getElement('done');
+    this.inProgress = this.LocalSaveService.getElement('inProgress');
+    this.pausaItems = this.LocalSaveService.getElement('pausaItems');
+    this.todo = this.LocalSaveService.getElement('todo');
   }
 }

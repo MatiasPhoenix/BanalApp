@@ -12,6 +12,14 @@
           <mat-label>Titolo Card</mat-label>
           <input matInput placeholder="Ciao sono un titolo!" [(ngModel)]="titoloCard" name="titoloCard" required>
         </mat-form-field>
+        <div class="my-2">
+          <label>Scegli avatar: </label>
+          <mat-radio-group [(ngModel)]="avatar" name="avatar" required>
+            <mat-radio-button value="../../../assets/Avatars/Avatar00.png"><img class="avatar" src="../../../assets/Avatars/Avatar00.png" alt=""></mat-radio-button>
+            <mat-radio-button value="../../../assets/Avatars/Avatar01.png"><img class="avatar" src="../../../assets/Avatars/Avatar01.png" alt=""></mat-radio-button>
+            <mat-radio-button value="../../../assets/Avatars/Avatar02.png"><img class="avatar" src="../../../assets/Avatars/Avatar02.png" alt=""></mat-radio-button>
+          </mat-radio-group>
+        </div>
 
         <div>
           <mat-form-field class="example-full-width">
@@ -21,19 +29,24 @@
         </div>
 
         <div class="d-flex justify-content-between">
+
           <mat-form-field>
             <mat-label>Colleghi</mat-label>
             <mat-select [(ngModel)]="collegaUno" name="collegaUno" required>
-              <mat-option value="one">First option</mat-option>
-              <mat-option value="two">Second option</mat-option>
+              <mat-option class="mb-1 me-1" value="../../../assets/Avatars/Avatar05.png"><img class="avatar" src="../../../assets/Avatars/Avatar05.png" alt=""> Signor orso</mat-option>
+              <mat-option class="mb-1 me-1" value="../../../assets/Avatars/Avatar07.png"><img class="avatar" src="../../../assets/Avatars/Avatar07.png" alt=""> Mr.Papero</mat-option>
+              <mat-option class="mb-1 me-1" value="../../../assets/Avatars/Avatar08.png"><img class="avatar" src="../../../assets/Avatars/Avatar08.png" alt=""> Foxy la Volpe</mat-option>
+              <mat-option class="mb-1 me-1" value="../../../assets/Avatars/Avatar09.png"><img class="avatar" src="../../../assets/Avatars/Avatar09.png" alt=""> Bob cagnolone</mat-option>
             </mat-select>
           </mat-form-field>
 
           <mat-form-field>
             <mat-label>Colleghi</mat-label>
             <mat-select [(ngModel)]="collegaDue" name="collegaDue" required>
-              <mat-option value="one">First option</mat-option>
-              <mat-option value="two">Second option</mat-option>
+              <mat-option class="mb-1 me-1" value="../../../assets/Avatars/Avatar05.png"><img class="avatar" src="../../../assets/Avatars/Avatar05.png" alt=""> Signor orso</mat-option>
+              <mat-option class="mb-1 me-1" value="../../../assets/Avatars/Avatar07.png"><img class="avatar" src="../../../assets/Avatars/Avatar07.png" alt=""> Mr.Papero</mat-option>
+              <mat-option class="mb-1 me-1" value="../../../assets/Avatars/Avatar08.png"><img class="avatar" src="../../../assets/Avatars/Avatar08.png" alt=""> Foxy la Volpe</mat-option>
+              <mat-option class="mb-1 me-1" value="../../../assets/Avatars/Avatar09.png"><img class="avatar" src="../../../assets/Avatars/Avatar09.png" alt=""> Bob cagnolone</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -49,10 +62,10 @@
       </div>
     </form>
 
-</div>
+  </div>
 </div>
 
-<div class="">
+<div class="d-flex justify-content-between">
 
 
 <div class="example-container scrollable-container">
@@ -67,7 +80,7 @@
     @for (item of todo; track item) {
       <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
         <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
+          <div mat-card-avatar class="example-header-image"><img src={{item.avatar}} alt="" class="avatar"></div>
           <mat-card-title>{{item.titoloCard}}</mat-card-title>
           <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
         </mat-card-header>
@@ -75,11 +88,18 @@
         <mat-card-content>
 
         </mat-card-content>
-        <mat-card-actions>
-          <button class="btn btn-danger me-1" mat-button>LIKE</button>
-          <button class="btn btn-primary" mat-button>SHARE</button>
-        </mat-card-actions>
-      </mat-card>
+        <div class="d-flex justify-content-between">
+          <mat-card-actions>
+            <button class="btn btn-danger me-1" mat-button>LIKE</button>
+            <button class="btn btn-primary" mat-button>SHARE</button>
+          </mat-card-actions>
+
+          <div class="d-flex align-self-center">
+            <div class="mx-1"><img class="avatarCollega" src={{item.collegaUno}} alt=""></div>
+            <div class="mx-1"><img class="avatarCollega" src={{item.collegaDue}} alt=""></div>
+          </div>
+        </div>
+        </mat-card>
     }
 
     <p class="cursor-pointer text-secondary pt-2" (click)="newCard('todo')">Aggiungi altre card</p>
@@ -99,7 +119,7 @@
     @for (item of inProgress; track item) {
       <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
         <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
+          <div mat-card-avatar class="example-header-image"><img src={{item.avatar}} alt="" class="avatar"></div>
           <mat-card-title>{{item.titoloCard}}</mat-card-title>
           <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
         </mat-card-header>
@@ -107,10 +127,17 @@
         <mat-card-content>
 
         </mat-card-content>
-        <mat-card-actions>
-          <button class="btn btn-danger me-1" mat-button>LIKE</button>
-          <button class="btn btn-primary" mat-button>SHARE</button>
-        </mat-card-actions>
+        <div class="d-flex justify-content-between">
+          <mat-card-actions>
+            <button class="btn btn-danger me-1" mat-button>LIKE</button>
+            <button class="btn btn-primary" mat-button>SHARE</button>
+          </mat-card-actions>
+
+          <div class="d-flex align-self-center">
+            <div class="mx-1"><img class="avatarCollega" src={{item.collegaUno}} alt=""></div>
+            <div class="mx-1"><img class="avatarCollega" src={{item.collegaDue}} alt=""></div>
+          </div>
+        </div>
       </mat-card>
 
       }
@@ -131,7 +158,7 @@
     @for (item of pausaItems; track item) {
       <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
         <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
+          <div mat-card-avatar class="example-header-image"><img src={{item.avatar}} alt="" class="avatar"></div>
           <mat-card-title>{{item.titoloCard}}</mat-card-title>
           <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
         </mat-card-header>
@@ -139,10 +166,17 @@
         <mat-card-content>
 
         </mat-card-content>
-        <mat-card-actions>
-          <button class="btn btn-danger me-1" mat-button>LIKE</button>
-          <button class="btn btn-primary" mat-button>SHARE</button>
-        </mat-card-actions>
+        <div class="d-flex justify-content-between">
+          <mat-card-actions>
+            <button class="btn btn-danger me-1" mat-button>LIKE</button>
+            <button class="btn btn-primary" mat-button>SHARE</button>
+          </mat-card-actions>
+
+          <div class="d-flex align-self-center">
+            <div class="mx-1"><img class="avatarCollega" src={{item.collegaUno}} alt=""></div>
+            <div class="mx-1"><img class="avatarCollega" src={{item.collegaDue}} alt=""></div>
+          </div>
+        </div>
       </mat-card>
 
       }
@@ -163,7 +197,7 @@
     @for (item of done; track item) {
       <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
         <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
+          <div mat-card-avatar class="example-header-image"><img src={{item.avatar}} alt="" class="avatar"></div>
           <mat-card-title>{{item.titoloCard}}</mat-card-title>
           <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
         </mat-card-header>
@@ -171,10 +205,17 @@
         <mat-card-content>
 
         </mat-card-content>
-        <mat-card-actions>
-          <button class="btn btn-danger me-1" mat-button>LIKE</button>
-          <button class="btn btn-primary" mat-button>SHARE</button>
-        </mat-card-actions>
+        <div class="d-flex justify-content-between">
+          <mat-card-actions>
+            <button class="btn btn-danger me-1" mat-button>LIKE</button>
+            <button class="btn btn-primary" mat-button>SHARE</button>
+          </mat-card-actions>
+
+          <div class="d-flex align-self-center">
+            <div class="mx-1"><img class="avatarCollega" src={{item.collegaUno}} alt=""></div>
+            <div class="mx-1"><img class="avatarCollega" src={{item.collegaDue}} alt=""></div>
+          </div>
+        </div>
       </mat-card>
 
       }
