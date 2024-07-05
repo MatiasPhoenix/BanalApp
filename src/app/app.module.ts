@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { CreditsComponent } from './Components/credits/credits.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatSelectModule,
     MatSlideToggleModule,
     MatRadioModule,
+    FontAwesomeModule,
 
   ],
   providers: [

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { LocalSaveService } from './../../Services/local-save.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { NgForm,  } from '@angular/forms';
@@ -24,6 +24,8 @@ export class PromemoriaComponent {
   ngOnInit(){
     this.getAllArray()
   }
+
+
 
   constructor(private LocalSaveService: LocalSaveService){}
 
@@ -56,6 +58,7 @@ export class PromemoriaComponent {
   tipoDiCard      : string    = "";
   titoloCard      : string    = "";
   testoCard       : string    = "";
+  imgCard         : string    = "";
   collegaUno      : string    = "";
   collegaDue      : string    = "";
   avatar          : string    = "";
@@ -63,6 +66,7 @@ export class PromemoriaComponent {
   opzioneUnoCard  : boolean   = false;
   opzioneDueCard  : boolean   = false;
   opzioneTreCard  : boolean   = false;
+  modificaBoolean : boolean   = false;
 
 
 
@@ -108,5 +112,20 @@ export class PromemoriaComponent {
     this.inProgress = this.LocalSaveService.getElement('inProgress');
     this.pausaItems = this.LocalSaveService.getElement('pausaItems');
     this.todo = this.LocalSaveService.getElement('todo');
+  }
+
+  tmpCard : MyElement[] = []
+  modificaCard(item : any){
+    if (this.modificaBoolean == false) {
+      this.modificaBoolean = true;
+    }else{
+      this.modificaBoolean = false;
+    }
+
+    if (this.tmpCard.length == 1) {
+      this.tmpCard.splice(0, this.tmpCard.length);
+    }else{
+      this.tmpCard.push(item);
+    }
   }
 }
