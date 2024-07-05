@@ -1,12 +1,13 @@
-
+<!--
 <mat-sidenav-container class="sidenav-container">
-
   <mat-sidenav  #sidenav mode="side" opened="false" fixedTopGap="56">
     <app-lateral-bar ></app-lateral-bar>
   </mat-sidenav>
-
   <mat-sidenav-content class="home">
-    <router-outlet></router-outlet>
   </mat-sidenav-content>
+</mat-sidenav-container> -->
 
-</mat-sidenav-container>
+<app-header></app-header>
+<div class="home">
+  <router-outlet class="horizontal-scroll"></router-outlet>
+</div>
