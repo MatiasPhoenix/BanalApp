@@ -84,10 +84,13 @@
     <div *ngFor="let item of tmpCard">
       <div class="d-flex justify-content-center w-100">
         <mat-card class="col-6 example-card my-1 align-self-center" appearance="outlined" cdkDrag>
-          <mat-card-header>
-            <div mat-card-avatar class="example-header-image"><img src={{item.avatar}} alt="" class="avatar"></div>
-            <mat-card-title (click)="modificaCard(item)">{{item.titoloCard}}</mat-card-title>
-            <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
+          <mat-card-header class="d-flex justify-content-between">
+            <div mat-card-avatar class="example-header-image me-4"><img src={{item.avatar}} alt="" class="avatar"></div>
+            <div>
+              <mat-card-title>{{item.titoloCard}}</mat-card-title>
+              <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
+            </div>
+            <div class="cursor-pointer text-danger ms-auto" (click)="removeThisCard(item)">X</div>
           </mat-card-header>
           <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
           <mat-card-content>
@@ -112,7 +115,7 @@
             <div class="mx-1"><img class="avatarCollega" src={{item.collegaDue}} alt=""></div>
           </div>
         </div>
-        <button class="btn btn-danger align-self-center m-1" (click)="modificaCard(item)">Chiudi Card</button>
+        <button class="btn btn-danger align-self-center m-1" (click)="modificaCard(item, '')">Chiudi Card</button>
       </mat-card>
     </div>
     </div>
@@ -135,7 +138,7 @@
       <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"><img src={{item.avatar}} alt="" class="avatar"></div>
-            <mat-card-title class="cursor-pointer" (click)="modificaCard(item)">{{item.titoloCard}}</mat-card-title>
+            <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'todo')">{{item.titoloCard}}</mat-card-title>
           <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
         </mat-card-header>
         <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
@@ -182,7 +185,7 @@
       <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"><img src={{item.avatar}} alt="" class="avatar"></div>
-          <mat-card-title class="cursor-pointer" (click)="modificaCard(item)">{{item.titoloCard}}</mat-card-title>
+          <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'inProgress')">{{item.titoloCard}}</mat-card-title>
           <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
         </mat-card-header>
         <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
@@ -229,7 +232,7 @@
       <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"><img src={{item.avatar}} alt="" class="avatar"></div>
-          <mat-card-title class="cursor-pointer" (click)="modificaCard(item)">{{item.titoloCard}}</mat-card-title>
+          <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'pausaItems')">{{item.titoloCard}}</mat-card-title>
           <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
         </mat-card-header>
         <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
@@ -274,10 +277,13 @@
   <h6 class="pt-2">Done</h6>
     @for (item of done; track item) {
       <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"><img src={{item.avatar}} alt="" class="avatar"></div>
-          <mat-card-title class="cursor-pointer" (click)="modificaCard(item)">{{item.titoloCard}}</mat-card-title>
-          <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
+        <mat-card-header class="d-flex justify-content-between">
+          <div mat-card-avatar class="example-header-image me-4"><img src={{item.avatar}} alt="" class="avatar"></div>
+          <div>
+            <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'done')">{{item.titoloCard}}</mat-card-title>
+            <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
+          </div>
+          <div class="cursor-pointer text-danger ms-auto" (click)="removeThisCard(item); arrayCard='done'">X</div>
         </mat-card-header>
         <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
         <mat-card-content>

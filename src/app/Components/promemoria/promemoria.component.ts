@@ -115,7 +115,7 @@ export class PromemoriaComponent {
   }
 
   tmpCard : MyElement[] = []
-  modificaCard(item : any){
+  modificaCard(item : any, arrayCard : string){
     if (this.modificaBoolean == false) {
       this.modificaBoolean = true;
     }else{
@@ -127,5 +127,37 @@ export class PromemoriaComponent {
     }else{
       this.tmpCard.push(item);
     }
+    return this.arrayCard = arrayCard
   }
+
+  arrayCard : string = "";
+  removeThisCard(card: any) {
+    switch (this.arrayCard) {
+      case 'todo':
+        this.todo = this.todo.filter(item => item !== card);
+        this.saveAllArray();
+        break;
+
+      case 'inProgress':
+        this.inProgress = this.inProgress.filter(item => item !== card);
+        this.saveAllArray();
+        break;
+
+      case 'pausa':
+        this.pausaItems = this.pausaItems.filter(item => item !== card);
+        this.saveAllArray();
+        break;
+
+      case 'done':
+        this.done = this.done.filter(item => item !== card);
+        this.saveAllArray();
+        break;
+
+      default:
+        break;
+    }
+    this.arrayCard = "";
+    this.modificaBoolean = false
+  }
+
 }
