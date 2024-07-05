@@ -50,30 +50,27 @@
             }
           },
           "configurations": {
-  "production": {
-    "budgets": [
-      {
-        "type": "initial",
-        "maximumWarning": "2mb",
-        "maximumError": "4mb"
-      },
-      {
-        "type": "anyComponentStyle",
-        "maximumWarning": "10kb",
-        "maximumError": "20kb"
-      }
-    ],
-    "outputHashing": "all",
-    "optimization": true,
-    "sourceMap": false,
-    "extractCss": true,
-    "namedChunks": false,
-    "aot": true,
-    "extractLicenses": true,
-    "vendorChunk": false,
-    "buildOptimizer": true
-  }
-},
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "4mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "20kb",
+                  "maximumError": "40kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
           "defaultConfiguration": "production"
         },
         "serve": {
