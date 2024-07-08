@@ -1,13 +1,12 @@
 <!-- Schermata creazione Card -->
 <div *ngIf="schermataCard" class="modal">
   <div class="modal-content">
-    <div class="d-flex justify-content-between">
-      <h3>Crea la tua card</h3>
-      <span class="close" (click)="cancelModal()">&times;</span>
-    </div>
-
-    <form class="example-form container" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
-      <div class="flex-column justify-content-center">
+    <form class="example-form container creaCardNuova" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
+      <div class="d-flex justify-content-between pt-4">
+        <h3>Crea la tua card</h3>
+        <span class="close" (click)="cancelModal()">&times;</span>
+      </div>
+      <div class="flex-column justify-content-center m-3">
 
         <div class="d-flex">
           <mat-form-field appearance="fill">
@@ -43,9 +42,9 @@
 
         <div class="d-flex justify-content-between">
 
-          <mat-form-field>
+          <mat-form-field class="zIndex">
             <mat-label>Colleghi</mat-label>
-            <mat-select [(ngModel)]="collegaUno" name="collegaUno" required>
+            <mat-select  [(ngModel)]="collegaUno" name="collegaUno" required>
               <mat-option class="mb-1 me-1" value="../../../assets/Avatars/Avatar05.png"><img class="avatar" src="../../../assets/Avatars/Avatar05.png" alt=""> Signor orso</mat-option>
               <mat-option class="mb-1 me-1" value="../../../assets/Avatars/Avatar07.png"><img class="avatar" src="../../../assets/Avatars/Avatar07.png" alt=""> Mr.Papero</mat-option>
               <mat-option class="mb-1 me-1" value="../../../assets/Avatars/Avatar08.png"><img class="avatar" src="../../../assets/Avatars/Avatar08.png" alt=""> Foxy la Volpe</mat-option>
@@ -78,7 +77,7 @@
   </div>
 </div>
 
-<!-- Schermata modifica Card -->
+<!-- Schermata Card -->
 <div *ngIf="modificaBoolean" class="modal">
   <div class="modal-content container d-flex justify-content-center ">
     <div *ngFor="let item of tmpCard">
@@ -88,15 +87,16 @@
             <div mat-card-avatar class="example-header-image me-4"><img src={{item.avatar}} alt="" class="avatar"></div>
             <div>
               <mat-card-title>{{item.titoloCard}}</mat-card-title>
-              <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
+              <mat-card-subtitle>+++++</mat-card-subtitle>
             </div>
-            <div class="cursor-pointer text-danger ms-auto" (click)="removeThisCard(item)">X</div>
+            <div class="cursor-pointer text-danger ms-auto" (click)="removeThisCard(item)">
+             <p class="text-danger">Cancella Card</p></div>
           </mat-card-header>
           <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
           <mat-card-content>
-            <p>{{item.testoCard}}</p>
+            <p class="my-2">{{item.testoCard}}</p>
           </mat-card-content>
-          <div class="d-flex justify-content-between">
+          <div class="d-flex justify-content-between mx-3">
             <mat-card-actions>
               <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M280-280h280v-80H280v80Zm0-160h400v-80H280v80Zm0-160h400v-80H280v80Zm-80 480q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/></svg>
             <div *ngIf="item.opzioneUnoCard">
@@ -115,7 +115,7 @@
             <div class="mx-1"><img class="avatarCollega" src={{item.collegaDue}} alt=""></div>
           </div>
         </div>
-        <button class="btn btn-danger align-self-center m-1" (click)="modificaCard(item, '')">Chiudi Card</button>
+        <button class="btn btn-danger align-self-center mb-3" (click)="modificaCard(item, '')">Chiudi Card</button>
       </mat-card>
     </div>
     </div>
@@ -171,7 +171,7 @@
   </div>
 </div>
 
-<div class="example-container">
+<div class="example-container scrollable-container">
 
   <div
   cdkDropList

@@ -89,13 +89,18 @@
 
 .modal-content {
   position: relative;
-  background-color: #fefefe;
+  background-color: #fefefe00;
   margin: auto;
   padding: 20px;
-  border: 1px solid #888;
+  border: 1px solid #88888800;
   width: 80%;
   top: 50%;
   transform: translateY(-50%);
+}
+.creaCardNuova{
+  background-color: #fefefeef;
+  border: 1px solid #888888f5;
+  border-radius: 5%;
 }
 
 .close {

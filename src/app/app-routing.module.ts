@@ -6,9 +6,9 @@ import { PromemoriaComponent } from './Components/promemoria/promemoria.componen
 import { CreditsComponent } from './Components/credits/credits.component';
 
 const routes: Routes = [
-  { path: 'home', component:HomeComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component:PromemoriaComponent},
   { path: 'lateral-bar', component:LateralBarComponent},
-  { path: 'promemoria', component:PromemoriaComponent},
   { path: 'credits', component:CreditsComponent},
 ];
 

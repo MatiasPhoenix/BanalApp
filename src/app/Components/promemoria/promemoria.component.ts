@@ -16,9 +16,9 @@ interface MyElement {
 }
 
 @Component({
-  selector: 'app-promemoria',
+  selector:    'app-promemoria',
   templateUrl: './promemoria.component.html',
-  styleUrl: './promemoria.component.scss',
+  styleUrl:    './promemoria.component.scss',
 })
 export class PromemoriaComponent {
   ngOnInit(){
