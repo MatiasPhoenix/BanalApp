@@ -127,7 +127,7 @@
 
 <div class="d-flex justify-content-evenly">
 
-  <div class="example-container scrollable-container">
+  <div class="example-container scrollable-container ">
     <div
     cdkDropList
     #todoList="cdkDropList"
@@ -137,7 +137,7 @@
     (cdkDropListDropped)="drop($event)">
     <h6 class="pt-2">To do</h6>
       @for (item of todo; track item) {
-        <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
+        <mat-card class="example-card my-1 cardCard" appearance="outlined" cdkDrag>
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"><img src={{item.avatar}} alt="" class="avatar"></div>
               <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'todo')">{{item.titoloCard}}</mat-card-title>
@@ -184,7 +184,7 @@
     (cdkDropListDropped)="drop($event)">
     <h6 class="pt-2">In Progress</h6>
       @for (item of inProgress; track item) {
-        <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
+        <mat-card class="example-card my-1 cardCard" appearance="outlined" cdkDrag>
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"><img src={{item.avatar}} alt="" class="avatar"></div>
             <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'inProgress')">{{item.titoloCard}}</mat-card-title>
@@ -231,7 +231,7 @@
     (cdkDropListDropped)="drop($event)">
     <h6 class="pt-2">Pausa</h6>
       @for (item of pausaItems; track item) {
-        <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
+        <mat-card class="example-card my-1 cardCard" appearance="outlined" cdkDrag>
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"><img src={{item.avatar}} alt="" class="avatar"></div>
             <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'pausaItems')">{{item.titoloCard}}</mat-card-title>
@@ -278,7 +278,7 @@
     (cdkDropListDropped)="drop($event)">
     <h6 class="pt-2">Done</h6>
       @for (item of done; track item) {
-        <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
+        <mat-card class="example-card my-1 cardCard" appearance="outlined" cdkDrag>
           <mat-card-header class="d-flex justify-content-between">
             <div mat-card-avatar class="example-header-image me-4"><img src={{item.avatar}} alt="" class="avatar"></div>
             <div>
