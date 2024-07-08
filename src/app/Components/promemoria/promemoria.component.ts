@@ -61,7 +61,7 @@ export class PromemoriaComponent {
   imgCard         : string    = "";
   collegaUno      : string    = "";
   collegaDue      : string    = "";
-  avatar          : string    = "";
+  avatar          : string    = "../../../assets/Avatars/Avatar00.png";
   schermataCard   : boolean   = false;
   opzioneUnoCard  : boolean   = false;
   opzioneDueCard  : boolean   = false;
@@ -159,5 +159,7 @@ export class PromemoriaComponent {
     this.arrayCard = "";
     this.modificaBoolean = false
   }
+
+
 
 }

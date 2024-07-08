@@ -5,7 +5,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .cursor-pointer{cursor: pointer;}
 
-
+.miniText{
+  font-size: 0.6rem;
+}
 
 .scrollable-container::-webkit-scrollbar {
   width: 10px;

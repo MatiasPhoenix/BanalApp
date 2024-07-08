@@ -27,7 +27,6 @@
         <div class="my-2 d-flex flex-column">
           <label class="mb-1">Scegli avatar: </label>
           <mat-radio-group [(ngModel)]="avatar" name="avatar" required>
-            <mat-radio-button value="../../../assets/Avatars/Avatar00.png"><img class="avatar" src="../../../assets/Avatars/Avatar00.png" alt=""></mat-radio-button>
             <mat-radio-button value="../../../assets/Avatars/Avatar01.png"><img class="avatar" src="../../../assets/Avatars/Avatar01.png" alt=""></mat-radio-button>
             <mat-radio-button value="../../../assets/Avatars/Avatar02.png"><img class="avatar" src="../../../assets/Avatars/Avatar02.png" alt=""></mat-radio-button>
           </mat-radio-group>
@@ -77,7 +76,7 @@
   </div>
 </div>
 
-<!-- Schermata Card -->
+<!-- Schermata anteprima Card -->
 <div *ngIf="modificaBoolean" class="modal">
   <div class="modal-content container d-flex justify-content-center ">
     <div *ngFor="let item of tmpCard">
@@ -122,200 +121,205 @@
   </div>
 </div>
 
+
+
+
+
 <div class="d-flex justify-content-evenly">
 
-
-<div class="example-container scrollable-container">
-  <div
-  cdkDropList
-  #todoList="cdkDropList"
-  [cdkDropListData]="todo"
-  [cdkDropListConnectedTo]="[doneList, progressList, pausaList]"
-  class="example-list"
-  (cdkDropListDropped)="drop($event)">
-  <h6 class="pt-2">To do</h6>
-    @for (item of todo; track item) {
-      <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"><img src={{item.avatar}} alt="" class="avatar"></div>
-            <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'todo')">{{item.titoloCard}}</mat-card-title>
-          <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
-        </mat-card-header>
-        <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
-        <mat-card-content>
-
-        </mat-card-content>
-        <div class="d-flex justify-content-between">
-          <mat-card-actions>
-            <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M280-280h280v-80H280v80Zm0-160h400v-80H280v80Zm0-160h400v-80H280v80Zm-80 480q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/></svg>
-            <div *ngIf="item.opzioneUnoCard">
-              <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M720-330q0 104-73 177T470-80q-104 0-177-73t-73-177v-370q0-75 52.5-127.5T400-880q75 0 127.5 52.5T580-700v350q0 46-32 78t-78 32q-46 0-78-32t-32-78v-370h80v370q0 13 8.5 21.5T470-320q13 0 21.5-8.5T500-350v-350q-1-42-29.5-71T400-800q-42 0-71 29t-29 71v370q-1 71 49 120.5T470-160q70 0 119-49.5T640-330v-390h80v390Z"/></svg>
-            </div>
-            <div *ngIf="item.opzioneDueCard">
-              <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M655-200 513-342l56-56 85 85 170-170 56 57-225 226Zm0-320L513-662l56-56 85 85 170-170 56 57-225 226ZM80-280v-80h360v80H80Zm0-320v-80h360v80H80Z"/></svg>
-            </div>
-            <div *ngIf="item.opzioneTreCard">
-              <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m676-140-56-56 123-124H640v-80h240v240h-80v-104L676-140Zm-456 40q-17 0-34.5-10.5T160-135L60-310q-8-14-8-34.5t8-34.5l260-446q8-14 25.5-24.5T380-860h200q17 0 34.5 10.5T640-825l182 312q-23-6-47.5-8t-48.5 2L574-780H386L132-344l94 164h316q11 23 25.5 43t33.5 37H220Zm70-180-29-51 183-319h72l101 176q-17 13-31.5 28.5T560-413l-80-139-110 192h164q-7 19-10.5 39t-3.5 41H290Z"/></svg>
-            </div>
-          </mat-card-actions>
-
-          <div class="d-flex align-self-center">
-            <div class="mx-1"><img class="avatarCollega" src={{item.collegaUno}} alt=""></div>
-            <div class="mx-1"><img class="avatarCollega" src={{item.collegaDue}} alt=""></div>
-          </div>
-        </div>
-        </mat-card>
-    }
-
-    <p class="cursor-pointer text-secondary pt-2" (click)="newCard('todo')">Aggiungi altre card</p>
-  </div>
-</div>
-
-<div class="example-container scrollable-container">
-
-  <div
-  cdkDropList
-  #progressList="cdkDropList"
-  [cdkDropListData]="inProgress"
-  [cdkDropListConnectedTo]="[doneList, todoList, pausaList]"
-  class="example-list d-flex flex-column"
-  (cdkDropListDropped)="drop($event)">
-  <h6 class="pt-2">In Progress</h6>
-    @for (item of inProgress; track item) {
-      <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"><img src={{item.avatar}} alt="" class="avatar"></div>
-          <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'inProgress')">{{item.titoloCard}}</mat-card-title>
-          <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
-        </mat-card-header>
-        <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
-        <mat-card-content>
-
-        </mat-card-content>
-        <div class="d-flex justify-content-between">
-          <mat-card-actions>
-            <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M280-280h280v-80H280v80Zm0-160h400v-80H280v80Zm0-160h400v-80H280v80Zm-80 480q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/></svg>
-            <div *ngIf="item.opzioneUnoCard">
-              <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M720-330q0 104-73 177T470-80q-104 0-177-73t-73-177v-370q0-75 52.5-127.5T400-880q75 0 127.5 52.5T580-700v350q0 46-32 78t-78 32q-46 0-78-32t-32-78v-370h80v370q0 13 8.5 21.5T470-320q13 0 21.5-8.5T500-350v-350q-1-42-29.5-71T400-800q-42 0-71 29t-29 71v370q-1 71 49 120.5T470-160q70 0 119-49.5T640-330v-390h80v390Z"/></svg>
-            </div>
-            <div *ngIf="item.opzioneDueCard">
-              <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M655-200 513-342l56-56 85 85 170-170 56 57-225 226Zm0-320L513-662l56-56 85 85 170-170 56 57-225 226ZM80-280v-80h360v80H80Zm0-320v-80h360v80H80Z"/></svg>
-            </div>
-            <div *ngIf="item.opzioneTreCard">
-              <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m676-140-56-56 123-124H640v-80h240v240h-80v-104L676-140Zm-456 40q-17 0-34.5-10.5T160-135L60-310q-8-14-8-34.5t8-34.5l260-446q8-14 25.5-24.5T380-860h200q17 0 34.5 10.5T640-825l182 312q-23-6-47.5-8t-48.5 2L574-780H386L132-344l94 164h316q11 23 25.5 43t33.5 37H220Zm70-180-29-51 183-319h72l101 176q-17 13-31.5 28.5T560-413l-80-139-110 192h164q-7 19-10.5 39t-3.5 41H290Z"/></svg>
-            </div>
-          </mat-card-actions>
-
-          <div class="d-flex align-self-center">
-            <div class="mx-1"><img class="avatarCollega" src={{item.collegaUno}} alt=""></div>
-            <div class="mx-1"><img class="avatarCollega" src={{item.collegaDue}} alt=""></div>
-          </div>
-        </div>
-      </mat-card>
-
-      }
-      <p class="cursor-pointer text-secondary pt-2" (click)="newCard('inProgress')">Aggiungi altre card</p>
-  </div>
-</div>
-
-<div class="example-container p-2 bgSection">
-
-  <div
-  cdkDropList
-  #pausaList="cdkDropList"
-  [cdkDropListData]="pausaItems"
-  [cdkDropListConnectedTo]="[doneList, todoList, progressList]"
-  class="example-list d-flex flex-column"
-  (cdkDropListDropped)="drop($event)">
-  <h6 class="pt-2">Pausa</h6>
-    @for (item of pausaItems; track item) {
-      <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"><img src={{item.avatar}} alt="" class="avatar"></div>
-          <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'pausaItems')">{{item.titoloCard}}</mat-card-title>
-          <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
-        </mat-card-header>
-        <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
-        <mat-card-content>
-
-        </mat-card-content>
-        <div class="d-flex justify-content-between">
-          <mat-card-actions>
-            <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M280-280h280v-80H280v80Zm0-160h400v-80H280v80Zm0-160h400v-80H280v80Zm-80 480q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/></svg>
-            <div *ngIf="item.opzioneUnoCard">
-              <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M720-330q0 104-73 177T470-80q-104 0-177-73t-73-177v-370q0-75 52.5-127.5T400-880q75 0 127.5 52.5T580-700v350q0 46-32 78t-78 32q-46 0-78-32t-32-78v-370h80v370q0 13 8.5 21.5T470-320q13 0 21.5-8.5T500-350v-350q-1-42-29.5-71T400-800q-42 0-71 29t-29 71v370q-1 71 49 120.5T470-160q70 0 119-49.5T640-330v-390h80v390Z"/></svg>
-            </div>
-            <div *ngIf="item.opzioneDueCard">
-              <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M655-200 513-342l56-56 85 85 170-170 56 57-225 226Zm0-320L513-662l56-56 85 85 170-170 56 57-225 226ZM80-280v-80h360v80H80Zm0-320v-80h360v80H80Z"/></svg>
-            </div>
-            <div *ngIf="item.opzioneTreCard">
-              <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m676-140-56-56 123-124H640v-80h240v240h-80v-104L676-140Zm-456 40q-17 0-34.5-10.5T160-135L60-310q-8-14-8-34.5t8-34.5l260-446q8-14 25.5-24.5T380-860h200q17 0 34.5 10.5T640-825l182 312q-23-6-47.5-8t-48.5 2L574-780H386L132-344l94 164h316q11 23 25.5 43t33.5 37H220Zm70-180-29-51 183-319h72l101 176q-17 13-31.5 28.5T560-413l-80-139-110 192h164q-7 19-10.5 39t-3.5 41H290Z"/></svg>
-            </div>
-          </mat-card-actions>
-
-          <div class="d-flex align-self-center">
-            <div class="mx-1"><img class="avatarCollega" src={{item.collegaUno}} alt=""></div>
-            <div class="mx-1"><img class="avatarCollega" src={{item.collegaDue}} alt=""></div>
-          </div>
-        </div>
-      </mat-card>
-
-      }
-      <p class="cursor-pointer text-secondary pt-2" (click)="newCard('pausa')">Aggiungi altre card</p>
-  </div>
-</div>
-
-<div class="example-container p-2 bgSection">
-
-  <div
-  cdkDropList
-  #doneList="cdkDropList"
-  [cdkDropListData]="done"
-  [cdkDropListConnectedTo]="[todoList, progressList, pausaList]"
-  class="example-list d-flex flex-column"
-  (cdkDropListDropped)="drop($event)">
-  <h6 class="pt-2">Done</h6>
-    @for (item of done; track item) {
-      <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
-        <mat-card-header class="d-flex justify-content-between">
-          <div mat-card-avatar class="example-header-image me-4"><img src={{item.avatar}} alt="" class="avatar"></div>
-          <div>
-            <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'done')">{{item.titoloCard}}</mat-card-title>
+  <div class="example-container scrollable-container">
+    <div
+    cdkDropList
+    #todoList="cdkDropList"
+    [cdkDropListData]="todo"
+    [cdkDropListConnectedTo]="[doneList, progressList, pausaList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <h6 class="pt-2">To do</h6>
+      @for (item of todo; track item) {
+        <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"><img src={{item.avatar}} alt="" class="avatar"></div>
+              <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'todo')">{{item.titoloCard}}</mat-card-title>
             <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
+          </mat-card-header>
+          <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
+          <mat-card-content>
+
+          </mat-card-content>
+          <div class="d-flex justify-content-between px-4">
+            <mat-card-actions>
+              <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M280-280h280v-80H280v80Zm0-160h400v-80H280v80Zm0-160h400v-80H280v80Zm-80 480q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/></svg>
+              <div *ngIf="item.opzioneUnoCard">
+                <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M720-330q0 104-73 177T470-80q-104 0-177-73t-73-177v-370q0-75 52.5-127.5T400-880q75 0 127.5 52.5T580-700v350q0 46-32 78t-78 32q-46 0-78-32t-32-78v-370h80v370q0 13 8.5 21.5T470-320q13 0 21.5-8.5T500-350v-350q-1-42-29.5-71T400-800q-42 0-71 29t-29 71v370q-1 71 49 120.5T470-160q70 0 119-49.5T640-330v-390h80v390Z"/></svg>
+              </div>
+              <div *ngIf="item.opzioneDueCard">
+                <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M655-200 513-342l56-56 85 85 170-170 56 57-225 226Zm0-320L513-662l56-56 85 85 170-170 56 57-225 226ZM80-280v-80h360v80H80Zm0-320v-80h360v80H80Z"/></svg>
+              </div>
+              <div *ngIf="item.opzioneTreCard">
+                <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m676-140-56-56 123-124H640v-80h240v240h-80v-104L676-140Zm-456 40q-17 0-34.5-10.5T160-135L60-310q-8-14-8-34.5t8-34.5l260-446q8-14 25.5-24.5T380-860h200q17 0 34.5 10.5T640-825l182 312q-23-6-47.5-8t-48.5 2L574-780H386L132-344l94 164h316q11 23 25.5 43t33.5 37H220Zm70-180-29-51 183-319h72l101 176q-17 13-31.5 28.5T560-413l-80-139-110 192h164q-7 19-10.5 39t-3.5 41H290Z"/></svg>
+              </div>
+            </mat-card-actions>
+
+            <div class="d-flex align-self-center">
+              <div class="mx-1"><img class="avatarCollega" src={{item.collegaUno}} alt=""></div>
+              <div class="mx-1"><img class="avatarCollega" src={{item.collegaDue}} alt=""></div>
+            </div>
           </div>
-          <div class="cursor-pointer text-danger ms-auto" (click)="removeThisCard(item); arrayCard='done'">X</div>
-        </mat-card-header>
-        <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
-        <mat-card-content>
-
-        </mat-card-content>
-        <div class="d-flex justify-content-between">
-
-          <mat-card-actions>
-            <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M280-280h280v-80H280v80Zm0-160h400v-80H280v80Zm0-160h400v-80H280v80Zm-80 480q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/></svg>
-            <div *ngIf="item.opzioneUnoCard">
-              <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M720-330q0 104-73 177T470-80q-104 0-177-73t-73-177v-370q0-75 52.5-127.5T400-880q75 0 127.5 52.5T580-700v350q0 46-32 78t-78 32q-46 0-78-32t-32-78v-370h80v370q0 13 8.5 21.5T470-320q13 0 21.5-8.5T500-350v-350q-1-42-29.5-71T400-800q-42 0-71 29t-29 71v370q-1 71 49 120.5T470-160q70 0 119-49.5T640-330v-390h80v390Z"/></svg>
-            </div>
-            <div *ngIf="item.opzioneDueCard">
-              <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M655-200 513-342l56-56 85 85 170-170 56 57-225 226Zm0-320L513-662l56-56 85 85 170-170 56 57-225 226ZM80-280v-80h360v80H80Zm0-320v-80h360v80H80Z"/></svg>
-            </div>
-            <div *ngIf="item.opzioneTreCard">
-              <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m676-140-56-56 123-124H640v-80h240v240h-80v-104L676-140Zm-456 40q-17 0-34.5-10.5T160-135L60-310q-8-14-8-34.5t8-34.5l260-446q8-14 25.5-24.5T380-860h200q17 0 34.5 10.5T640-825l182 312q-23-6-47.5-8t-48.5 2L574-780H386L132-344l94 164h316q11 23 25.5 43t33.5 37H220Zm70-180-29-51 183-319h72l101 176q-17 13-31.5 28.5T560-413l-80-139-110 192h164q-7 19-10.5 39t-3.5 41H290Z"/></svg>
-            </div>
-          </mat-card-actions>
-
-          <div class="d-flex align-self-center">
-            <div class="mx-1"><img class="avatarCollega" src={{item.collegaUno}} alt=""></div>
-            <div class="mx-1"><img class="avatarCollega" src={{item.collegaDue}} alt=""></div>
-          </div>
-        </div>
-      </mat-card>
-
+          </mat-card>
       }
 
-      <p class="cursor-pointer text-secondary pt-2" (click)="newCard('done')">Aggiungi altre card</p>
+      <p class="cursor-pointer text-secondary pt-2" (click)="newCard('todo')">Aggiungi altre card</p>
+    </div>
+  </div>
+
+  <div class="example-container scrollable-container">
+
+    <div
+    cdkDropList
+    #progressList="cdkDropList"
+    [cdkDropListData]="inProgress"
+    [cdkDropListConnectedTo]="[doneList, todoList, pausaList]"
+    class="example-list d-flex flex-column"
+    (cdkDropListDropped)="drop($event)">
+    <h6 class="pt-2">In Progress</h6>
+      @for (item of inProgress; track item) {
+        <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"><img src={{item.avatar}} alt="" class="avatar"></div>
+            <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'inProgress')">{{item.titoloCard}}</mat-card-title>
+            <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
+          </mat-card-header>
+          <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
+          <mat-card-content>
+
+          </mat-card-content>
+          <div class="d-flex justify-content-between px-4">
+            <mat-card-actions>
+              <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M280-280h280v-80H280v80Zm0-160h400v-80H280v80Zm0-160h400v-80H280v80Zm-80 480q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/></svg>
+              <div *ngIf="item.opzioneUnoCard">
+                <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M720-330q0 104-73 177T470-80q-104 0-177-73t-73-177v-370q0-75 52.5-127.5T400-880q75 0 127.5 52.5T580-700v350q0 46-32 78t-78 32q-46 0-78-32t-32-78v-370h80v370q0 13 8.5 21.5T470-320q13 0 21.5-8.5T500-350v-350q-1-42-29.5-71T400-800q-42 0-71 29t-29 71v370q-1 71 49 120.5T470-160q70 0 119-49.5T640-330v-390h80v390Z"/></svg>
+              </div>
+              <div *ngIf="item.opzioneDueCard">
+                <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M655-200 513-342l56-56 85 85 170-170 56 57-225 226Zm0-320L513-662l56-56 85 85 170-170 56 57-225 226ZM80-280v-80h360v80H80Zm0-320v-80h360v80H80Z"/></svg>
+              </div>
+              <div *ngIf="item.opzioneTreCard">
+                <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m676-140-56-56 123-124H640v-80h240v240h-80v-104L676-140Zm-456 40q-17 0-34.5-10.5T160-135L60-310q-8-14-8-34.5t8-34.5l260-446q8-14 25.5-24.5T380-860h200q17 0 34.5 10.5T640-825l182 312q-23-6-47.5-8t-48.5 2L574-780H386L132-344l94 164h316q11 23 25.5 43t33.5 37H220Zm70-180-29-51 183-319h72l101 176q-17 13-31.5 28.5T560-413l-80-139-110 192h164q-7 19-10.5 39t-3.5 41H290Z"/></svg>
+              </div>
+            </mat-card-actions>
+
+            <div class="d-flex align-self-center">
+              <div class="mx-1"><img class="avatarCollega" src={{item.collegaUno}} alt=""></div>
+              <div class="mx-1"><img class="avatarCollega" src={{item.collegaDue}} alt=""></div>
+            </div>
+          </div>
+        </mat-card>
+
+        }
+        <p class="cursor-pointer text-secondary pt-2" (click)="newCard('inProgress')">Aggiungi altre card</p>
+    </div>
+  </div>
+
+  <div class="example-container p-2 bgSection">
+
+    <div
+    cdkDropList
+    #pausaList="cdkDropList"
+    [cdkDropListData]="pausaItems"
+    [cdkDropListConnectedTo]="[doneList, todoList, progressList]"
+    class="example-list d-flex flex-column"
+    (cdkDropListDropped)="drop($event)">
+    <h6 class="pt-2">Pausa</h6>
+      @for (item of pausaItems; track item) {
+        <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"><img src={{item.avatar}} alt="" class="avatar"></div>
+            <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'pausaItems')">{{item.titoloCard}}</mat-card-title>
+            <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
+          </mat-card-header>
+          <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
+          <mat-card-content>
+
+          </mat-card-content>
+          <div class="d-flex justify-content-between px-4">
+            <mat-card-actions>
+              <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M280-280h280v-80H280v80Zm0-160h400v-80H280v80Zm0-160h400v-80H280v80Zm-80 480q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/></svg>
+              <div *ngIf="item.opzioneUnoCard">
+                <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M720-330q0 104-73 177T470-80q-104 0-177-73t-73-177v-370q0-75 52.5-127.5T400-880q75 0 127.5 52.5T580-700v350q0 46-32 78t-78 32q-46 0-78-32t-32-78v-370h80v370q0 13 8.5 21.5T470-320q13 0 21.5-8.5T500-350v-350q-1-42-29.5-71T400-800q-42 0-71 29t-29 71v370q-1 71 49 120.5T470-160q70 0 119-49.5T640-330v-390h80v390Z"/></svg>
+              </div>
+              <div *ngIf="item.opzioneDueCard">
+                <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M655-200 513-342l56-56 85 85 170-170 56 57-225 226Zm0-320L513-662l56-56 85 85 170-170 56 57-225 226ZM80-280v-80h360v80H80Zm0-320v-80h360v80H80Z"/></svg>
+              </div>
+              <div *ngIf="item.opzioneTreCard">
+                <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m676-140-56-56 123-124H640v-80h240v240h-80v-104L676-140Zm-456 40q-17 0-34.5-10.5T160-135L60-310q-8-14-8-34.5t8-34.5l260-446q8-14 25.5-24.5T380-860h200q17 0 34.5 10.5T640-825l182 312q-23-6-47.5-8t-48.5 2L574-780H386L132-344l94 164h316q11 23 25.5 43t33.5 37H220Zm70-180-29-51 183-319h72l101 176q-17 13-31.5 28.5T560-413l-80-139-110 192h164q-7 19-10.5 39t-3.5 41H290Z"/></svg>
+              </div>
+            </mat-card-actions>
+
+            <div class="d-flex align-self-center">
+              <div class="mx-1"><img class="avatarCollega" src={{item.collegaUno}} alt=""></div>
+              <div class="mx-1"><img class="avatarCollega" src={{item.collegaDue}} alt=""></div>
+            </div>
+          </div>
+        </mat-card>
+
+        }
+        <p class="cursor-pointer text-secondary pt-2" (click)="newCard('pausa')">Aggiungi altre card</p>
+    </div>
+  </div>
+
+  <div class="example-container p-2 bgSection">
+
+    <div
+    cdkDropList
+    #doneList="cdkDropList"
+    [cdkDropListData]="done"
+    [cdkDropListConnectedTo]="[todoList, progressList, pausaList]"
+    class="example-list d-flex flex-column"
+    (cdkDropListDropped)="drop($event)">
+    <h6 class="pt-2">Done</h6>
+      @for (item of done; track item) {
+        <mat-card class="example-card my-1" appearance="outlined" cdkDrag>
+          <mat-card-header class="d-flex justify-content-between">
+            <div mat-card-avatar class="example-header-image me-4"><img src={{item.avatar}} alt="" class="avatar"></div>
+            <div>
+              <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'done')">{{item.titoloCard}}</mat-card-title>
+              <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
+            </div>
+            <div class="cursor-pointer text-danger ms-auto" (click)="removeThisCard(item); arrayCard='done'"><p class="text-danger miniText">Remove Card</p></div>
+          </mat-card-header>
+          <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
+          <mat-card-content>
+
+          </mat-card-content>
+          <div class="d-flex justify-content-between px-4">
+
+            <mat-card-actions>
+              <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M280-280h280v-80H280v80Zm0-160h400v-80H280v80Zm0-160h400v-80H280v80Zm-80 480q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/></svg>
+              <div *ngIf="item.opzioneUnoCard">
+                <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M720-330q0 104-73 177T470-80q-104 0-177-73t-73-177v-370q0-75 52.5-127.5T400-880q75 0 127.5 52.5T580-700v350q0 46-32 78t-78 32q-46 0-78-32t-32-78v-370h80v370q0 13 8.5 21.5T470-320q13 0 21.5-8.5T500-350v-350q-1-42-29.5-71T400-800q-42 0-71 29t-29 71v370q-1 71 49 120.5T470-160q70 0 119-49.5T640-330v-390h80v390Z"/></svg>
+              </div>
+              <div *ngIf="item.opzioneDueCard">
+                <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M655-200 513-342l56-56 85 85 170-170 56 57-225 226Zm0-320L513-662l56-56 85 85 170-170 56 57-225 226ZM80-280v-80h360v80H80Zm0-320v-80h360v80H80Z"/></svg>
+              </div>
+              <div *ngIf="item.opzioneTreCard">
+                <svg class="me-1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m676-140-56-56 123-124H640v-80h240v240h-80v-104L676-140Zm-456 40q-17 0-34.5-10.5T160-135L60-310q-8-14-8-34.5t8-34.5l260-446q8-14 25.5-24.5T380-860h200q17 0 34.5 10.5T640-825l182 312q-23-6-47.5-8t-48.5 2L574-780H386L132-344l94 164h316q11 23 25.5 43t33.5 37H220Zm70-180-29-51 183-319h72l101 176q-17 13-31.5 28.5T560-413l-80-139-110 192h164q-7 19-10.5 39t-3.5 41H290Z"/></svg>
+              </div>
+            </mat-card-actions>
+
+            <div class="d-flex align-self-center">
+              <div class="mx-1"><img class="avatarCollega" src={{item.collegaUno}} alt=""></div>
+              <div class="mx-1"><img class="avatarCollega" src={{item.collegaDue}} alt=""></div>
+            </div>
+          </div>
+        </mat-card>
+
+        }
+
+        <p class="cursor-pointer text-secondary pt-2" (click)="newCard('done')">Aggiungi altre card</p>
+    </div>
   </div>
 </div>
 
-</div>
+
+
 

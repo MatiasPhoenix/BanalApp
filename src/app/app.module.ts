@@ -7,7 +7,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatRadioModule} from '@angular/material/radio';
-import {FloatLabelType} from '@angular/material/form-field';
+import { DragScrollComponent, DragScrollItemDirective } from 'ngx-drag-scroll';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -47,6 +47,8 @@ import { HeaderComponent } from './Components/header/header.component';
     MatSlideToggleModule,
     MatRadioModule,
     FontAwesomeModule,
+    DragScrollComponent,
+    DragScrollItemDirective,
 
   ],
   providers: [
