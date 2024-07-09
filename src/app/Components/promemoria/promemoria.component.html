@@ -8,7 +8,7 @@
       </div>
       <div class="flex-column justify-content-center m-3">
 
-        <div class="d-flex">
+        <div class="d-md-flex">
           <mat-form-field appearance="fill">
             <mat-label>Titolo Card</mat-label>
             <input matInput placeholder="Ciao sono un titolo!" [(ngModel)]="titoloCard" name="titoloCard" required>
@@ -18,7 +18,7 @@
           </mat-form-field>
           <div class="d-flex flex-column">
             <label class="mb-1 ps-2">Scegli immagine se vuoi: </label>
-            <mat-radio-group [(ngModel)]="imgCard" name="imgCard">
+            <mat-radio-group [(ngModel)]="imgCard" name="imgCard" class="d-flex">
               <mat-radio-button value="https://picsum.photos/400/200?grayscale"><img class="imgDemostration" src="https://picsum.photos/200/300?grayscale" alt=""></mat-radio-button>
               <mat-radio-button value="https://picsum.photos/400/200/?blur"><img class="imgDemostration" src="https://picsum.photos/200/300/?blur" alt=""></mat-radio-button>
             </mat-radio-group>
@@ -39,7 +39,7 @@
           </mat-form-field>
         </div>
 
-        <div class="d-flex justify-content-between">
+        <div class="d-md-flex justify-content-between">
 
           <mat-form-field class="zIndex">
             <mat-label>Colleghi</mat-label>
@@ -62,10 +62,10 @@
           </mat-form-field>
         </div>
 
-        <div class="d-flex justify-content-between">
-          <mat-slide-toggle [(ngModel)]="opzioneUnoCard" name="opzioneUnoCard">Opzione Uno</mat-slide-toggle>
-          <mat-slide-toggle [(ngModel)]="opzioneDueCard" name="opzioneDueCard">Opzione Due</mat-slide-toggle>
-          <mat-slide-toggle [(ngModel)]="opzioneTreCard" name="opzioneTreCard">Opzione Tre</mat-slide-toggle>
+        <div class="d-md-flex justify-content-between">
+          <mat-slide-toggle [(ngModel)]="opzioneUnoCard" name="opzioneUnoCard" class="my-1">Opzione Uno</mat-slide-toggle>
+          <mat-slide-toggle [(ngModel)]="opzioneDueCard" name="opzioneDueCard" class="my-1">Opzione Due</mat-slide-toggle>
+          <mat-slide-toggle [(ngModel)]="opzioneTreCard" name="opzioneTreCard" class="my-1">Opzione Tre</mat-slide-toggle>
         </div>
         <div class="d-flex justify-content-center mt-4">
           <button mat-raised-button color="primary" class="btn btn-success" type="submit">IButtonPlus</button>
@@ -78,9 +78,9 @@
 
 <!-- Schermata anteprima Card -->
 <div *ngIf="modificaBoolean" class="modal">
-  <div class="modal-content container d-flex justify-content-center ">
+  <div class="modal-content container d-flex justify-content-md-center ">
     <div *ngFor="let item of tmpCard">
-      <div class="d-flex justify-content-center w-100">
+      <div class="d-flex justify-content-center">
         <mat-card class="col-6 example-card my-1 align-self-center" appearance="outlined" cdkDrag>
           <mat-card-header class="d-flex justify-content-between">
             <div mat-card-avatar class="example-header-image me-4"><img src={{item.avatar}} alt="" class="avatar"></div>
@@ -122,9 +122,9 @@
 </div>
 
 
-<div class="d-flex justify-content-evenly scrollX">
+<div class="scrollX">
 
-  <div class="example-container scrollable-container ">
+  <div class="example-container scrollable-container">
     <div
     cdkDropList
     #todoList="cdkDropList"
