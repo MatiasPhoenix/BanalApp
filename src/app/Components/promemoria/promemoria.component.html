@@ -39,9 +39,9 @@
           </mat-form-field>
         </div>
 
-        <div class="d-md-flex justify-content-between">
+        <div class="d-md-flex justify-content-md-between">
 
-          <mat-form-field class="zIndex">
+          <mat-form-field class="">
             <mat-label>Colleghi</mat-label>
             <mat-select  [(ngModel)]="collegaUno" name="collegaUno" required>
               <mat-option class="mb-1 me-1" value="../../../assets/Avatars/Avatar05.png"><img class="avatar" src="../../../assets/Avatars/Avatar05.png" alt=""> Signor orso</mat-option>
@@ -217,7 +217,7 @@
     </div>
   </div>
 
-  <div class="example-container p-2 bgSection">
+  <div class="example-container p-2 bgSection scrollable-container">
 
     <div
     cdkDropList
@@ -231,7 +231,7 @@
         <mat-card class="example-card my-1 cardCard" appearance="outlined" cdkDrag>
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"><img src={{item.avatar}} alt="" class="avatar"></div>
-            <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'pausaItems')">{{item.titoloCard}}</mat-card-title>
+            <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'pausa')">{{item.titoloCard}}</mat-card-title>
             <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
           </mat-card-header>
           <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
@@ -264,7 +264,7 @@
     </div>
   </div>
 
-  <div class="example-container p-2 bgSection">
+  <div class="example-container p-2 bgSection scrollable-container">
 
     <div
     cdkDropList

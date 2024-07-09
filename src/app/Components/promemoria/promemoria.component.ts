@@ -3,6 +3,7 @@ import { LocalSaveService } from './../../Services/local-save.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { NgForm,  } from '@angular/forms';
 
+
 interface MyElement {
   titoloCard      : string,
   imgCard         : string,
@@ -72,7 +73,6 @@ export class PromemoriaComponent {
 
   newCard(typeCard : any) : any {
     this.schermataCard = true;
-    typeCard.toStrin
     return this.tipoDiCard = typeCard;
   }
   cancelModal() {
@@ -106,6 +106,9 @@ export class PromemoriaComponent {
     this.LocalSaveService.saveElement('inProgress', this.inProgress);
     this.LocalSaveService.saveElement('pausaItems', this.pausaItems);
     this.LocalSaveService.saveElement('todo', this.todo);
+    this.avatar = "../../../assets/Avatars/Avatar00.png";
+    this.tmpCard = [];
+    this.arrayCard = "";
   }
   getAllArray(){
     this.done = this.LocalSaveService.getElement('done');
@@ -127,11 +130,16 @@ export class PromemoriaComponent {
     }else{
       this.tmpCard.push(item);
     }
+
     return this.arrayCard = arrayCard
   }
 
   arrayCard : string = "";
   removeThisCard(card: any) {
+    if (this.arrayCard === "" || this.arrayCard === "done") {
+      this.done = this.done.filter(item => item !== card);
+      this.saveAllArray();
+    }
     switch (this.arrayCard) {
       case 'todo':
         this.todo = this.todo.filter(item => item !== card);
@@ -148,14 +156,10 @@ export class PromemoriaComponent {
         this.saveAllArray();
         break;
 
-      case 'done':
-        this.done = this.done.filter(item => item !== card);
-        this.saveAllArray();
-        break;
-
       default:
         break;
     }
+    this.tmpCard = [];
     this.arrayCard = "";
     this.modificaBoolean = false
   }
