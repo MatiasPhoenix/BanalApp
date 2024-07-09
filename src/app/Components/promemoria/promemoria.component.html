@@ -1,6 +1,6 @@
 <!-- Schermata creazione Card -->
 <div *ngIf="schermataCard" class="modal">
-  <div class="modal-content">
+  <div class="mt-5">
     <form class="example-form container creaCardNuova" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
       <div class="d-flex justify-content-between pt-4">
         <h3>Crea la tua card</h3>
@@ -8,7 +8,7 @@
       </div>
       <div class="flex-column justify-content-center m-3">
 
-        <div class="d-md-flex">
+        <div class="cardSmall d-flex">
           <mat-form-field appearance="fill">
             <mat-label>Titolo Card</mat-label>
             <input matInput placeholder="Ciao sono un titolo!" [(ngModel)]="titoloCard" name="titoloCard" required>
@@ -24,7 +24,7 @@
             </mat-radio-group>
           </div>
         </div>
-        <div class="my-2 d-flex flex-column">
+        <div class="cardSmall my-2 d-flex flex-column align-items-center justify-content-center">
           <label class="mb-1">Scegli avatar: </label>
           <mat-radio-group [(ngModel)]="avatar" name="avatar" required>
             <mat-radio-button value="../../../assets/Avatars/Avatar01.png"><img class="avatar" src="../../../assets/Avatars/Avatar01.png" alt=""></mat-radio-button>
@@ -32,14 +32,14 @@
           </mat-radio-group>
         </div>
 
-        <div>
+        <div class="cardSmall">
           <mat-form-field class="example-full-width">
             <mat-label>Testo della Card</mat-label>
             <textarea matInput placeholder="Diventerò il testo della tua card!" [(ngModel)]="testoCard" name="testoCard" required></textarea>
           </mat-form-field>
         </div>
 
-        <div class="d-md-flex justify-content-md-between">
+        <div class="cardSmall d-flex justify-content-between">
 
           <mat-form-field class="">
             <mat-label>Colleghi</mat-label>
@@ -62,13 +62,13 @@
           </mat-form-field>
         </div>
 
-        <div class="d-md-flex justify-content-between">
+        <div class="cardSmall d-flex justify-content-between">
           <mat-slide-toggle [(ngModel)]="opzioneUnoCard" name="opzioneUnoCard" class="my-1">Opzione Uno</mat-slide-toggle>
           <mat-slide-toggle [(ngModel)]="opzioneDueCard" name="opzioneDueCard" class="my-1">Opzione Due</mat-slide-toggle>
           <mat-slide-toggle [(ngModel)]="opzioneTreCard" name="opzioneTreCard" class="my-1">Opzione Tre</mat-slide-toggle>
         </div>
         <div class="d-flex justify-content-center mt-4">
-          <button mat-raised-button color="primary" class="btn btn-success" type="submit">IButtonPlus</button>
+          <button mat-raised-button color="primary" class="btn btn-success" type="submit">Crea Card</button>
         </div>
       </div>
     </form>
@@ -78,10 +78,10 @@
 
 <!-- Schermata anteprima Card -->
 <div *ngIf="modificaBoolean" class="modal">
-  <div class="modal-content container d-flex justify-content-md-center ">
+  <div class="container d-flex justify-content-md-center p-5">
     <div *ngFor="let item of tmpCard">
       <div class="d-flex justify-content-center">
-        <mat-card class="col-6 example-card my-1 align-self-center" appearance="outlined" cdkDrag>
+        <mat-card class="example-card my-1 align-self-center" appearance="outlined" cdkDrag>
           <mat-card-header class="d-flex justify-content-between">
             <div mat-card-avatar class="example-header-image me-4"><img src={{item.avatar}} alt="" class="avatar"></div>
             <div>
@@ -89,11 +89,11 @@
               <mat-card-subtitle>+++++</mat-card-subtitle>
             </div>
             <div class="cursor-pointer text-danger ms-auto" (click)="removeThisCard(item)">
-             <p class="text-danger">Cancella Card</p></div>
+             <p class="text-danger miniText text-center">Cancella Card</p></div>
           </mat-card-header>
           <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
           <mat-card-content>
-            <p class="my-2">{{item.testoCard}}</p>
+            <p class="my-2 boxText">{{item.testoCard}}</p>
           </mat-card-content>
           <div class="d-flex justify-content-between mx-3">
             <mat-card-actions>
@@ -137,7 +137,7 @@
         <mat-card class="example-card my-1 cardCard" appearance="outlined" cdkDrag>
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"><img src={{item.avatar}} alt="" class="avatar"></div>
-              <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'todo')">{{item.titoloCard}}</mat-card-title>
+              <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'todo')" (click)="scrollUp();">{{item.titoloCard}}</mat-card-title>
             <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
           </mat-card-header>
           <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
@@ -166,7 +166,7 @@
           </mat-card>
       }
 
-      <p class="cursor-pointer text-secondary pt-2" (click)="newCard('todo')">Aggiungi altre card</p>
+      <p class="cursor-pointer text-secondary pt-2" (click)="newCard('todo')" >Aggiungi altre card</p>
     </div>
   </div>
 
@@ -184,7 +184,7 @@
         <mat-card class="example-card my-1 cardCard" appearance="outlined" cdkDrag>
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"><img src={{item.avatar}} alt="" class="avatar"></div>
-            <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'inProgress')">{{item.titoloCard}}</mat-card-title>
+            <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'inProgress')" (click)="scrollUp();">{{item.titoloCard}}</mat-card-title>
             <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
           </mat-card-header>
           <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
@@ -231,7 +231,7 @@
         <mat-card class="example-card my-1 cardCard" appearance="outlined" cdkDrag>
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"><img src={{item.avatar}} alt="" class="avatar"></div>
-            <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'pausa')">{{item.titoloCard}}</mat-card-title>
+            <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'pausa')" (click)="scrollUp();">{{item.titoloCard}}</mat-card-title>
             <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
           </mat-card-header>
           <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
@@ -279,10 +279,10 @@
           <mat-card-header class="d-flex justify-content-between">
             <div mat-card-avatar class="example-header-image me-4"><img src={{item.avatar}} alt="" class="avatar"></div>
             <div>
-              <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'done')">{{item.titoloCard}}</mat-card-title>
+              <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'done')" (click)="scrollUp();">{{item.titoloCard}}</mat-card-title>
               <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
             </div>
-            <div class="cursor-pointer text-danger ms-auto" (click)="removeThisCard(item); arrayCard='done'"><p class="text-danger miniText">Remove Card</p></div>
+            <div class="cursor-pointer text-danger ms-auto" (click)="removeThisCard(item); arrayCard='done'"><p class="text-danger miniText text-center">Remove Card</p></div>
           </mat-card-header>
           <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
           <mat-card-content>

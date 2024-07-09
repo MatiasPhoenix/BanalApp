@@ -164,6 +164,7 @@ export class PromemoriaComponent {
     this.modificaBoolean = false
   }
 
-
-
+  scrollUp(){
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }

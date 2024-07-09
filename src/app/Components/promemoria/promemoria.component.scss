@@ -29,6 +29,20 @@
     max-width: 300px;
   }
 }
+@media (max-width: 490px){
+  .cardSmall{
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media (max-width: 590px){
+  .boxText{
+    max-width: 450px;
+  }
+}
 
 .example-box {
   padding: 20px 10px;
