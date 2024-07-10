@@ -81,12 +81,11 @@
   <div class="container d-flex justify-content-center align-self-center p-5 animationCard">
     <div *ngFor="let item of tmpCard">
       <div class="d-flex justify-content-center">
-        <mat-card class="example-card my-1 align-self-center" appearance="outlined" cdkDrag>
-          <mat-card-header class="d-flex justify-content-between">
+        <mat-card class="my-1 justify-content-center" appearance="outlined" cdkDrag>
+          <mat-card-header class="d-flex justify-content-around">
             <div mat-card-avatar class="example-header-image me-4"><img src={{item.avatar}} alt="" class="avatar"></div>
             <div>
               <mat-card-title>{{item.titoloCard}}</mat-card-title>
-              <mat-card-subtitle>+++++</mat-card-subtitle>
             </div>
             <div class="cursor-pointer text-danger ms-auto" (click)="removeThisCard(item)">
              <p class="text-danger miniText text-center">Elimina</p></div>
@@ -138,7 +137,6 @@
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"><img src={{item.avatar}} alt="" class="avatar"></div>
               <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'todo')" (click)="scrollUp();">{{item.titoloCard}}</mat-card-title>
-            <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
           </mat-card-header>
           <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
           <mat-card-content>
@@ -181,7 +179,6 @@
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"><img src={{item.avatar}} alt="" class="avatar"></div>
             <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'inProgress')" (click)="scrollUp();">{{item.titoloCard}}</mat-card-title>
-            <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
           </mat-card-header>
           <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
           <mat-card-content>
@@ -224,7 +221,6 @@
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"><img src={{item.avatar}} alt="" class="avatar"></div>
             <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'pausa')" (click)="scrollUp();">{{item.titoloCard}}</mat-card-title>
-            <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
           </mat-card-header>
           <img class="img-thumbnail imgDimension d-flex align-self-center" mat-card-image src={{item.imgCard}} alt="">
           <mat-card-content>
@@ -268,7 +264,6 @@
             <div mat-card-avatar class="example-header-image me-4"><img src={{item.avatar}} alt="" class="avatar"></div>
             <div>
               <mat-card-title class="cursor-pointer" (click)="modificaCard(item, 'done')" (click)="scrollUp();">{{item.titoloCard}}</mat-card-title>
-              <mat-card-subtitle>++{{item.titoloCard}}++</mat-card-subtitle>
             </div>
             <div class="cursor-pointer text-danger ms-auto" (click)="removeThisCard(item); arrayCard='done'"><p class="text-danger miniText text-center">Elimina</p></div>
           </mat-card-header>
