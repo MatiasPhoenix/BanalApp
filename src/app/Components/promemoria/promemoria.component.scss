@@ -91,8 +91,6 @@
   color: black;
 }
 
-
-
 .modal {
   display: block;
   position: fixed;
@@ -177,7 +175,8 @@ td {
 }
 
 
-//ANIMAZIONI
+
+//ANIMAZIONI//
 
 //Comparsa finestre di Creazione e di Anteprima
 
@@ -205,7 +204,7 @@ td {
   }
   25% {
     opacity: 0.3;
-    transform: scale(1.2) rotate(5deg);
+    transform: scale(0.8) rotate(5deg);
   }
   50% {
     opacity: 0.5;

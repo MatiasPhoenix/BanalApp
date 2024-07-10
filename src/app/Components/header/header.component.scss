@@ -7,3 +7,20 @@
   font-size: 1.5rem;
   margin-right: 45px;
 }
+
+.tutorial {
+  background-color: white;
+  height: 480px;
+  max-height: 480px;
+  width: 400px;
+  z-index: 9999;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  border: solid 2px rgb(84, 80, 80);
+}
+

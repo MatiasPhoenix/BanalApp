@@ -50,7 +50,6 @@ export class PromemoriaComponent {
     this.saveAllArray();
   }
 
-
   //Sezione dedicata alle nuove CARD//
 
   tipoDiCard      : string    = "";
@@ -65,8 +64,6 @@ export class PromemoriaComponent {
   opzioneDueCard  : boolean   = false;
   opzioneTreCard  : boolean   = false;
   modificaBoolean : boolean   = false;
-
-
 
   newCard(typeCard : any) : any {
     this.schermataCard = true;
