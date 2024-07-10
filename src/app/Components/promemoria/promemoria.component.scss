@@ -1,5 +1,3 @@
-
-
 .example-container {
   width: 430px;
   max-width: 100%;
@@ -12,7 +10,6 @@
   overflow-y: auto;
 
 }
-
 
 .example-list {
   border: solid 1px #ccc;
@@ -38,10 +35,9 @@
     justify-content: center;
   }
 }
-@media (max-width: 590px){
-  .boxText{
-    max-width: 450px;
-  }
+
+.boxText{
+  max-width: 400px;
 }
 
 .example-box {
@@ -181,3 +177,48 @@ td {
 }
 
 
+//ANIMAZIONI
+
+//Comparsa finestre di Creazione e di Anteprima
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animationCard {
+  animation: fadeInScale 0.3s ease-in-out;
+}
+
+//Comparsa delle card
+
+@keyframes shake-grow {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-5deg);
+  }
+  25% {
+    opacity: 0.3;
+    transform: scale(1.2) rotate(5deg);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2) rotate(-5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.shake-element {
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation: shake-grow 0.4s ease-out forwards;
+}

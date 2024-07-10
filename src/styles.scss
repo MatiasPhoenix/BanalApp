@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html, body {
+  height: 100%;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .cursor-pointer{cursor: pointer;}
@@ -18,7 +22,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 @media (max-width: 1023px){
   .scrollX{
-    width: 1000px;
+    width: 1400px;
     overflow-x: hidden;
     display: flex;
     justify-content: space-between;
@@ -67,4 +71,5 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   height: 65px;
   border-radius: 10%;
 }
+
 

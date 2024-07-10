@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { LocalSaveService } from './../../Services/local-save.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { NgForm,  } from '@angular/forms';
-
+import { ToastService } from 'angular-toastify';
 
 interface MyElement {
   titoloCard      : string,
@@ -26,9 +26,7 @@ export class PromemoriaComponent {
     this.getAllArray()
   }
 
-
-
-  constructor(private LocalSaveService: LocalSaveService){}
+  constructor(private LocalSaveService: LocalSaveService, private _toastService: ToastService){}
 
   todo        : MyElement[] = [];
 
@@ -37,7 +35,6 @@ export class PromemoriaComponent {
   inProgress  : MyElement[] = [];
 
   pausaItems  : MyElement[] = [];
-
 
   drop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
@@ -162,9 +159,18 @@ export class PromemoriaComponent {
     this.tmpCard = [];
     this.arrayCard = "";
     this.modificaBoolean = false
+    this.cardEliminata();
   }
 
   scrollUp(){
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  //Notifiche
+  cardCreata(){
+    this._toastService.info('Nuova Card creata!');
+  }
+  cardEliminata(){
+    this._toastService.info('Card Eliminata!');
   }
 }

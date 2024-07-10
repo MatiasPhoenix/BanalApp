@@ -6,8 +6,14 @@
     <app-lateral-bar ></app-lateral-bar>
   </mat-sidenav>
 
-  <mat-sidenav-content class="home">
-    <router-outlet></router-outlet>
+  <mat-sidenav-content class="home scrollable-container">
+    <router-outlet class="scrollable-container">
+
+      <lib-toastify-toast-container>
+      </lib-toastify-toast-container>
+
+
+    </router-outlet>
   </mat-sidenav-content>
 
 </mat-sidenav-container>

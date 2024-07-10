@@ -21,6 +21,7 @@ import { CreditsComponent } from './Components/credits/credits.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderComponent } from './Components/header/header.component';
+import { ToastService, AngularToastifyModule } from 'angular-toastify';
 
 @NgModule({
   declarations: [
@@ -49,10 +50,12 @@ import { HeaderComponent } from './Components/header/header.component';
     FontAwesomeModule,
     DragScrollComponent,
     DragScrollItemDirective,
+    AngularToastifyModule,
 
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    ToastService
   ],
   bootstrap: [AppComponent]
 })
