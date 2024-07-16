@@ -14,8 +14,8 @@ export class HeaderComponent {
 
   constructor(private LocalSaveService: LocalSaveService){}
 
-  myTutorial: MyTutorial[]=[]
-  banalAppTutorial : boolean = true;
+  myTutorial       : MyTutorial[] =[]
+  banalAppTutorial : boolean      = true;
 
   ngOnInit(){
     this.serviceTutorial();

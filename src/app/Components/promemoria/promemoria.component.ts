@@ -11,6 +11,7 @@ interface MyElement {
   collegaUno      : string,
   collegaDue      : string,
   avatar          : string,
+  dataCard        : string,
   opzioneUnoCard  : boolean,
   opzioneDueCard  : boolean,
   opzioneTreCard  : boolean,
@@ -22,8 +23,10 @@ interface MyElement {
   styleUrl:    './promemoria.component.scss',
 })
 export class PromemoriaComponent {
+
   ngOnInit(){
     this.getAllArray()
+    this.dataOggi()
   }
 
   constructor(private LocalSaveService: LocalSaveService, private _toastService: ToastService){}
@@ -52,24 +55,29 @@ export class PromemoriaComponent {
 
   //Sezione dedicata alle nuove CARD//
 
-  tipoDiCard      : string    = "";
-  titoloCard      : string    = "";
-  testoCard       : string    = "";
-  imgCard         : string    = "";
-  collegaUno      : string    = "";
-  collegaDue      : string    = "";
-  avatar          : string    = "../../../assets/Avatars/Avatar00.png";
-  schermataCard   : boolean   = false;
-  opzioneUnoCard  : boolean   = false;
-  opzioneDueCard  : boolean   = false;
-  opzioneTreCard  : boolean   = false;
-  modificaBoolean : boolean   = false;
+  tipoDiCard      : string      = "";
+  titoloCard      : string      = "";
+  testoCard       : string      = "";
+  imgCard         : string      = "";
+  collegaUno      : string      = "";
+  collegaDue      : string      = "";
+  avatar          : string      = "../../../assets/Avatars/Avatar00.png";
+  dataCard        : string      = "";
+  schermataCard   : boolean     = false;
+  opzioneUnoCard  : boolean     = false;
+  opzioneDueCard  : boolean     = false;
+  opzioneTreCard  : boolean     = false;
+  modificaBoolean : boolean     = false;
+
+  arrayCard       : string      = "";
+  tmpCard         : MyElement[] = []
 
   newCard(typeCard : any) : any {
     this.schermataCard = true;
     return this.tipoDiCard = typeCard;
   }
-  cancelModal() {
+
+  cancelModal(){
     this.schermataCard = false;
   }
 
@@ -111,7 +119,6 @@ export class PromemoriaComponent {
     this.todo = this.LocalSaveService.getElement('todo');
   }
 
-  tmpCard : MyElement[] = []
   modificaCard(item : any, arrayCard : string){
     if (this.modificaBoolean == false) {
       this.modificaBoolean = true;
@@ -128,7 +135,6 @@ export class PromemoriaComponent {
     return this.arrayCard = arrayCard
   }
 
-  arrayCard : string = "";
   removeThisCard(card: any) {
     if (this.arrayCard === "" || this.arrayCard === "done") {
       this.done = this.done.filter(item => item !== card);
@@ -157,6 +163,15 @@ export class PromemoriaComponent {
     this.arrayCard = "";
     this.modificaBoolean = false
     this.cardEliminata();
+  }
+
+  dataOggi(){
+    const today = new Date();
+    const options: Intl.DateTimeFormatOptions = { month: 'long', day: 'numeric' };
+    const formattedDate = today.toLocaleDateString('it-IT', options);
+    this.dataCard = formattedDate;
+    console.log(formattedDate);
+
   }
 
   scrollUp(){
