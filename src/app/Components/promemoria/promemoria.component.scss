@@ -26,19 +26,10 @@
     max-width: 300px;
   }
 }
-@media (max-width: 490px){
-  .cardSmall{
-    display: flex;
-    justify-items: center;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-}
 
 .boxText{
   min-height: 100px;
-  min-width: 400px;
+  min-width: 325px;
   max-width: 800px;
 }
 

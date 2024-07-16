@@ -14,7 +14,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .scrollX{
-  width: 2000px;
+  height: 100vh;
+  max-width: 2000px;
   overflow-x: hidden;
   display: flex;
   justify-content: space-between;
