@@ -10,10 +10,11 @@
   </div>
 </div>
 
+<!-- Sezione per il tutorial "how to use" -->
 <div *ngIf="banalAppTutorial" class="container d-flex justify-content-center align-self-center">
   <div class="tutorial">
     <h5 class="text-center">Semplice clone di Trello</h5>
-    <p class="text-center">PICCOLO TUTORIA</p>
+    <p class="text-center">PICCOLO TUTORIAL</p>
     <ul>
       <li>Puoi creare una nuova card in ogni categoria.</li>
       <li>Nella versione mobile puoi scorrere verso destra e sinistra per vedere altre categorie.</li>
@@ -21,6 +22,8 @@
       <li>Puoi spostare le card tra categorie, trascinandole.</li>
       <li>L'opzione di eliminare compare quando la cardi si trova in "Done" o nell'anteprima delle card.</li>
     </ul>
+    <p>In fondo ad ogni sezione troverai la voce "aggiungi altre card", qui potrai creare nuove card nella sezione corrispondente.</p>
+    <p>La finestra di "creazione card" è semplicemente un esempio, la scelta di immagini e di avatar è solo per verificare il funzionamento corretto del form. Come allo stesso modo "colleghi" e "opzioni", sono semplicemente indicative, a utilizzo puramente didattico/dimostrativo, implementare una funzione con questo punto di partenza è molto semplice.</p>
     <div class="d-flex justify-content-center align-items-center" >
       <button class="btn btn-success" (click)="apriTutorial()">Inizia</button>
     </div>

@@ -3,28 +3,23 @@
   <div class="mt-5 animationCard">
     <form class="example-form container creaCardNuova" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
       <div class="d-flex justify-content-between pt-4">
-        <h3>Crea la tua card</h3>
-        <span class="close" (click)="schermataCard = false">&times;</span>
+        <h3 class="ms-5">-Crea la tua card</h3>
+        <span class="close me-2" (click)="schermataCard = false">&times;</span>
       </div>
       <div class="flex-column justify-content-center m-3">
 
-        <div class="cardSmall d-flex">
+        <div class="cardSmall d-flex justify-content-center">
           <mat-form-field appearance="fill">
             <mat-label>Titolo Card</mat-label>
             <input matInput placeholder="Ciao sono un titolo!" [(ngModel)]="titoloCard" name="titoloCard" required>
-            <div></div>
-            <div></div>
-            <div></div>
           </mat-form-field>
-          <div class="d-flex flex-column">
-            <label class="mb-1 ps-2">Scegli immagine se vuoi: </label>
-            <mat-radio-group [(ngModel)]="imgCard" name="imgCard" class="d-flex">
+        </div>
+        <div class="cardSmall my-2 d-flex flex-column align-items-center justify-content-center">
+          <label class="mb-1 ps-2">Scegli immagine: </label>
+            <mat-radio-group [(ngModel)]="imgCard" name="imgCard" class="d-flex mb-2">
               <mat-radio-button value="https://picsum.photos/400/200?grayscale"><img class="imgDemostration" src="https://picsum.photos/200/300?grayscale" alt=""></mat-radio-button>
               <mat-radio-button value="https://picsum.photos/400/200/?blur"><img class="imgDemostration" src="https://picsum.photos/200/300/?blur" alt=""></mat-radio-button>
             </mat-radio-group>
-          </div>
-        </div>
-        <div class="cardSmall my-2 d-flex flex-column align-items-center justify-content-center">
           <label class="mb-1">Scegli avatar: </label>
           <mat-radio-group [(ngModel)]="avatar" name="avatar" required>
             <mat-radio-button value="../../../assets/Avatars/Avatar01.png"><img class="avatar" src="../../../assets/Avatars/Avatar01.png" alt=""></mat-radio-button>
